@@ -1,5 +1,5 @@
 
-Personal Website for Porfolio
+Personal Website for Resume/Porfolio
 
 
 
