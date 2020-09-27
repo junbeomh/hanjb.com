@@ -6,10 +6,15 @@ class Navbar extends React.Component {
     super(props);
     this.state = {
       showButton: false,
+      triggerThreshold: null,
     }
   }
 
   componentDidMount() {
+    let aboutHeight = document.getElementById('about').clientHeight;
+    this.setState({
+      triggerThreshold: aboutHeight
+    })
     window.addEventListener('scroll', this.showText);
   }
 
@@ -18,8 +23,7 @@ class Navbar extends React.Component {
   }
 
   showText = () => {
-    if (window.scrollY >= 1000) {
-      console.log(window.scrollY);
+    if (window.scrollY >= this.state.triggerThreshold) {
       this.setState({
         showButton: true
       });
@@ -40,7 +44,7 @@ class Navbar extends React.Component {
         <div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <span className="nav-link" href="#" style={this.state.showButton ? { color: "#fff" } : { color: "#026AE4" }} onClick={this.scrollToTop}>JunBeom Han</span>
+              <span className="nav-brand2" href="#" style={this.state.showButton ? { color: "#fff" } : { color: "#026AE4" }} onClick={this.scrollToTop}>JunBeom Han</span>
             </li>
           </ul>
         </div>
