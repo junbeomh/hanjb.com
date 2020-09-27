@@ -8,6 +8,7 @@ import Experience from './Sections/Experience';
 import Skills from './Sections/Skills';
 import Education from './Sections/Education';
 import Contact from './Sections/Contact';
+import Footer from './Sections/Footer';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
       <Skills></Skills>
       <Education></Education>
       <Contact></Contact>
+      <Footer></Footer>
   </div>
   );
 }

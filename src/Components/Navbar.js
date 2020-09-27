@@ -11,7 +11,8 @@ class Navbar extends React.Component {
   }
 
   componentDidMount() {
-    let aboutHeight = document.getElementById('about').clientHeight;
+    let aboutHeight = document.getElementById('main').clientHeight;
+    
     this.setState({
       triggerThreshold: aboutHeight
     })
