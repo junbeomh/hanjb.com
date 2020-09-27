@@ -29,9 +29,14 @@
 
 /* Sections */
 
-.about-section {
+.main-section {
     height: 100vh;
     background-color: white;
+}
+
+.about-section {
+    height: 100vh;
+    background-color: rgb(26, 194, 124);
 }
 
 .projects-section {
@@ -62,6 +67,6 @@
 /* React Scroll */
 
 .active {
-    color: white !important;
+    color: #000 !important;
     font-weight: bold;
 }
