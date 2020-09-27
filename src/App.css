@@ -1,4 +1,67 @@
-* {
-    margin: 0;
-    padding: 0;
+.body {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Navbar */
+
+.navbar-brand {
+    display: none;
+}
+
+@media screen and (max-width: 992px) {
+    .navbar-brand {
+        display: inline;
+    }
+}
+
+.navbar span {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.navItem {
+    padding: 0.75rem;
+    font-size: 0.75rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* Sections */
+
+.about-section {
+    height: 100vh;
+    background-color: white;
+}
+
+.projects-section {
+    height: 100vh;
+    background-color: sandybrown;
+}
+
+.experience-section {
+    height: 100vh;
+    background-color: rgb(216, 206, 112);
+}
+
+.skills-section {
+    height: 100vh;
+    background-color: mediumseagreen;
+}
+
+.education-section {
+    height: 100vh;
+    background-color: mediumpurple;
+}
+
+.contact-section {
+    height: 100vh;
+    background-color: tomato;
+}
+
+/* React Scroll */
+
+.active {
+    color: white !important;
+    font-weight: bold;
 }
