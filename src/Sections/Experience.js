@@ -1,11 +1,45 @@
 import React from 'react';
+import ResumeItem from '../Components/ResumeItem';
+
+const PAGE_NAME = "EXPERIENCE";
 
 class Experience extends React.Component {
 
     render() {
         return (
-            <div className="experience-section" id="experience"> </div>
-        );
+            <section className="experience-section" id="experience">
+                <div className="resume-content">
+                    <div className='resume-content-container'>
+                        <h1> {PAGE_NAME} </h1>
+                        <div className='resume-content-container-wrapper' style={{backgroundColor: "white", padding: "1rem"}}>
+                            <ul className='resume-items'>
+                                <ResumeItem
+                                    src='https://picsum.photos/200/300'
+                                    text='Explore the hidden waterfall deep inside the Amazon Jungle'
+                                    label='Adventure'
+                                    path='/services'
+                                />
+                            </ul>
+                            <ul className='resume-items'>
+                                <ResumeItem
+                                    src='https://picsum.photos/200/300'
+                                    text='Explore the hidden waterfall deep inside the Amazon Jungle'
+                                    label='Adventure'
+                                    path='/services'
+                                />
+                            </ul>
+                            <ul className='resume-items'>
+                                <ResumeItem
+                                    src='https://picsum.photos/200/300'
+                                    text='Explore the hidden waterfall deep inside the Amazon Jungle'
+                                    label='Adventure'
+                                    path='/services'
+                                />
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>);
     }
 }
 

@@ -1,18 +1,20 @@
 import React from 'react';
 import { Link, animateScroll as scroll } from 'react-scroll';
+import { Controller } from 'react-spring';
+import ThemeButton from '../Components/AppThemeHook';
 
 class Navbar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showButton: false,
-      triggerThreshold: null,
-    }
+  state = {
+    showButton: false,
+    triggerThreshold: null,
   }
+
+  animations = new Controller({ opacity: 0 });
+
 
   componentDidMount() {
     let aboutHeight = document.getElementById('main').clientHeight;
-    
+
     this.setState({
       triggerThreshold: aboutHeight
     })
@@ -39,6 +41,7 @@ class Navbar extends React.Component {
     scroll.scrollToTop();
   };
 
+
   render() {
     return (
       <nav className="navbar fixed-top navbar-expand-lg navbar-light" style={{ backgroundColor: "none" }}>
@@ -55,17 +58,18 @@ class Navbar extends React.Component {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav  ml-auto mx-auto">
-            <li><Link activeClass="active" className="navItem" to="about" spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.7)" }}> ABOUT </Link></li>
-            <li><Link activeClass="active" className="navItem" to="projects" spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.7)" }}> PROJECTS </Link></li>
-            <li><Link activeClass="active" className="navItem" to="experience" spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.7)" }}> EXPERIENCE </Link></li>
-            <li><Link activeClass="active" className="navItem" to="skills" spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.7)" }}> SKILLS </Link></li>
-            <li><Link activeClass="active" className="navItem" to="education" spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.7)" }}> EDUCATION </Link></li>
-            <li><Link activeClass="active" className="navItem" to="contact" spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.7)" }}> CONTACT </Link></li>
+            <li><Link activeClass="active" className="navItem" to="about" offset={-400} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.7)" }}> ABOUT </Link></li>
+            <li><Link activeClass="active" className="navItem" to="projects" offset={-400} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.7)" }}> PROJECTS </Link></li>
+            <li><Link activeClass="active" className="navItem" to="experience" offset={-400} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.7)" }}> EXPERIENCE </Link></li>
+            <li><Link activeClass="active" className="navItem" to="skills" offset={-400} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.7)" }}> SKILLS </Link></li>
+            <li><Link activeClass="active" className="navItem" to="education" offset={-400} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.7)" }}> EDUCATION </Link></li>
+            <li><Link activeClass="active" className="navItem" to="contact" offset={-400} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.7)" }}> CONTACT </Link></li>
           </ul>
         </div>
         <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
           <ul className="navbar-nav ml-auto">
-            <li className="nav-item">
+            <li className="social-icons nav-item">
+              {/* <ThemeButton> </ThemeButton> */}
             </li>
           </ul>
         </div>
