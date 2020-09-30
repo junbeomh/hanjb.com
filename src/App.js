@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './theme';
 import { GlobalStyles } from './global';
-import './App.css';
 import Navbar from "./Components/Navbar";
 import Main from './Sections/Main';
 import About from './Sections/About';
@@ -12,31 +11,18 @@ import Skills from './Sections/Skills';
 import Education from './Sections/Education';
 import Contact from './Sections/Contact';
 import Footer from './Sections/Footer';
-import { useTransition, animated } from 'react-spring';
+import Switch from "react-switch";
+import './App.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
 
 
-function App() {
-  const [theme, setTheme] = useState('light');
-  const [toggled, setToggled] = useState(false);
-
-  const items = [<i className="social-icon far fa-sun"></i>, <i className="social-icon far fa-moon"></i>];
-
-  const toggleTheme = () => {
-    setToggled(!toggled);
-    if (theme === 'light') {
-      setTheme('dark');
-    } else {
-      setTheme('light');
-    }
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {  }
   }
 
-  const transition = useTransition(items[+toggled], {
-    from: { opacity: 0 },
-    enter: { opacity: 1 },
-  });
-
-  const Gradients = () => (
+  Gradients = () => (
     <svg width="50" height="50" version="1.1" className="hidden">
       <defs>
         <linearGradient id="gradient-1" x1="0" x2="0" y1="0" y2="1">
@@ -67,33 +53,24 @@ function App() {
     </svg>
   );
 
-  return (
-    <div className="App">
-
-      {/* <div className="simple-trans-main" style={{ position: "relative", zIndex: "1" }} onClick={() => toggleTheme()}>
-        {transition((values, item) => (
-          <animated.div style={values}>
-            {item}
-          </animated.div>
-        ))}
-      </div> */}
-
-
-      <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-        <Gradients> </Gradients>
-        <Navbar></Navbar>
-        <Main></Main>
-        <About></About>
-        <Projects></Projects>
-        <Experience></Experience>
-        <Skills></Skills>
-        <Education></Education>
-        <Contact></Contact>
-        <Footer></Footer>
-      </ThemeProvider>
-
-    </div>
-  );
+  render() {
+    return (
+      <div className="App">
+        <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+          <GlobalStyles />
+          {this.Gradients}
+          <Navbar></Navbar>
+          <Main></Main>
+          <About></About>
+          <Experience></Experience>
+          <Education></Education>
+          <Projects></Projects>
+          <Skills></Skills>
+          <Footer></Footer>
+        </ThemeProvider>
+      </div>
+    );
+  }
 }
 
 export default App;
