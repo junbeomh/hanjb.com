@@ -23,7 +23,7 @@ body {
 }
 
 .navbar span {
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Sacramento', cursive;
     font-size: 1.5rem;
     color: white;
     margin-left: 1em;
@@ -185,19 +185,25 @@ body {
     max-width: 1120px;
     width: 90%;
     margin: 0 auto;
+    max-width: 50rem;
 }
 
 .resume-content-container-wrapper {
     position: relative;
     margin: 50px 0 45px;
+    border-radius: 1%;
 }
 
 .resume-items {
     margin-bottom: 24px;
 }
 
+.resume-items:first-child {
+    margin-top: 1.5rem;
+}
+
 .resume-item {
-    display: flex;
+    display: relative;
     flex: 1;
     margin: 0 1rem;
     border-radius: 10px;
@@ -206,4 +212,47 @@ body {
 .resume-item .date {
     display: relative;
     float: right;
+}
+
+.resume-content-title {
+    margin-top: 8rem;
+}
+
+.cloud-small, .cloud-big {
+    position: absolute;
+    border-radius: 5px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    will-change: transform;
+}
+
+
+.cloud-small {
+    opacity: 1;
+    width: 40ch;
+    height: 40ch;
+    background-image: url(https://image.flaticon.com/icons/svg/414/414927.svg);
+}
+
+.cloud-big {
+    opacity: 1;
+    width: 60ch;
+    height: 40ch;
+    background-image: url(https://image.flaticon.com/icons/svg/414/414927.svg);
+}
+
+.main-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-name {
+    font-family: 'Sacramento', cursive;
+    font: italic serif;
+    fill: black;
+    font-weight: 600;
 }

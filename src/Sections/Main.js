@@ -1,10 +1,26 @@
 import React from 'react';
 import { useEffect, useState } from "react";
+import { useSpring, animated } from 'react-spring';
 import "../App.css";
+
+const copy = 'JUNBEOM HAN'.split('');
+const calc = (x, y) => [x - window.innerWidth / 2, y - window.innerHeight / 2]
+// const trans1 = (x, y) => `translate3d(${x / 10}px,${y / 10}px,0)`
+// const trans2 = (x, y) => `translate3d(${x / 8 + 35}px,${y / 8 - 230}px,0)`
+// const trans3 = (x, y) => `translate3d(${x / 6 - 170}px,${y / 6 - 200}px,0)`
+// const trans4 = (x, y) => `translate3d(${x / 4 + 195}px, ${y / 4 - 100}px,0)`
+const trans1 = (x, y) => `translate3d(${x / 5 + 550}px, ${y / 5 - 250}px,0)`;
+const trans2 = (x, y) => `translate3d(${x / 5 + 460}px, ${y / 5 - 250}px,0)`;
+const trans3 = (x, y) => `translate3d(${x / 5 - 360}px, ${y / 5 - 120}px,0)`;
+const trans4 = (x, y) => `translate3d(${x / 5 - 470}px, ${y / 5 - 120}px,0)`;
+const trans5 = (x, y) => `translate3d(${x / 4 - 170}px, ${y / 4 - 100}px,0)`;
+const trans6 = (x, y) => `translate3d(${x / 4 + 190}px, ${y / 4 - 140}px,0)`;
+const trans7 = (x, y) => `translate3d(${x / 4 + 10}px, ${y / 4 - 260}px,0)`;
 
 
 export default function Main() {
     const [offset, setOffset] = useState(0);
+    const [props, set] = useSpring(() => ({ xy: [0, 0], config: { mass: 10, tension: 550, friction: 140 } }));
 
     useEffect(() => {
         function handleScroll() {
@@ -22,97 +38,25 @@ export default function Main() {
     return (
         <div className="main-section" id="main">
             <section className="hero">
-                <img
-                    src="https://picsum.photos/200/300"
-                    alt="test"
-                    className="parallax"
-                    style={{
-                        height: '300px',
-                        width: '400px',
-                        // transform: `translateY(${offset * 100}px)`,
-                        position: 'absolute', left: '35%', top: '30%',
-                        transform: `translate(${offset * 1}px, ${offset * 1.5}px)`,
-                    }}
-                />
+                <div className="main-container" onMouseMove={({ clientX: x, clientY: y }) => set({ xy: calc(x, y) })}>
+                    <animated.div class="cloud-small" style={{ transform: props.xy.interpolate(trans5) }} />
+                    <animated.div class="cloud-small" style={{ transform: props.xy.interpolate(trans6) }} />
+                    <animated.div class="cloud-big" style={{ transform: props.xy.interpolate(trans7) }} />
+                    <animated.div style={{ transform: props.xy.interpolate(trans1) }} >
+                        <svg width="452.22499999999997px" height="157.6362335205078px" xmlns="http://www.w3.org/2000/svg" viewBox="23.887500000000017 -3.8181167602539006 452.22499999999997 157.6362335205078" style={{ background: "rgba(255, 255, 255, 0)" }} preserveAspectRatio="xMidYMid"><defs><filter id="editing-extrude-glow"><feFlood flood-color="#ffffff" result="flood-1"></feFlood><feMorphology operator="erode" radius="1" in="SourceAlpha" result="erode"></feMorphology><feComposite operator="in" in="flood-1" in2="erode" result="comp1"></feComposite><feConvolveMatrix order="0,0" divisor="1" in="comp1" result="convolve" kernelMatrix=""></feConvolveMatrix><feOffset dx="0" dy="0" in="convolve" result="extrude"></feOffset><feComposite operator="in" in="flood-1" in2="extrude" result="comp-extrude"></feComposite><feFlood flood-color="#e0dfdd" result="flood-2"></feFlood><feComposite operator="in" in="flood-2" in2="SourceAlpha" result="comp2"></feComposite><feMorphology operator="dilate" radius="1" in="comp2" result="dilate"></feMorphology><feOffset dx="0" dy="0" in="dilate" result="offset"></feOffset><feGaussianBlur in="offset" stdDeviation="5.8" result="blur"></feGaussianBlur><feComponentTransfer in="blur" result="shadow"><feFuncA type="linear" slope="0.8" intercept="-0.2"></feFuncA></feComponentTransfer><feMerge><feMergeNode in="shadow"></feMergeNode><feMergeNode in="comp-extrude"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge></filter></defs><g filter="url(#editing-extrude-glow)"><g transform="translate(90.10000610351562, 116.3140640258789)"><path d="M48 0L72 0L72-75L48-75L48-48.50L30-48.50L30-75L6-75L6 0L30 0L30-26.50L48-26.50L48 0ZM107.40-20.40L107.40-20.40L107.40-16.20L107.40-16.20Q109.20-16 111-15.90L111-15.90L111-15.90Q112.80-15.80 114.60-15.80L114.60-15.80L114.60-15.80Q125.80-15.80 137.20-19.40L137.20-19.40L140-1.80L140-1.80Q126.50 1.80 113.40 1.80L113.40 1.80L113.40 1.80Q96.60 1.80 89.10-6.05L89.10-6.05L89.10-6.05Q81.60-13.90 81.60-30L81.60-30L81.60-30Q81.60-46.10 89.15-53.95L89.15-53.95L89.15-53.95Q96.70-61.80 113.40-61.80L113.40-61.80L113.40-61.80Q121.80-61.80 127.40-60.75L127.40-60.75L127.40-60.75Q133-59.70 136.45-57.25L136.45-57.25L136.45-57.25Q139.90-54.80 141.35-50.65L141.35-50.65L141.35-50.65Q142.80-46.50 142.80-40.20L142.80-40.20L142.80-40.20Q142.80-35 141.05-31.25L141.05-31.25L141.05-31.25Q139.30-27.50 135.20-25.10L135.20-25.10L135.20-25.10Q131.10-22.70 124.30-21.55L124.30-21.55L124.30-21.55Q117.50-20.40 107.40-20.40ZM107.40-39.20L107.40-39.20L107.40-34.30L112.30-34.30L112.30-34.30Q116.70-34.30 118.65-35.20L118.65-35.20L118.65-35.20Q120.60-36.10 120.60-39.40L120.60-39.40L120.60-44.30L115.70-44.30L115.70-44.30Q111.30-44.30 109.35-43.40L109.35-43.40L109.35-43.40Q107.40-42.50 107.40-39.20ZM151.80-11.30L151.80-78L175.80-79.80L175.80-17.20L175.80-17.20Q177.70-16.80 179.20-16.60L179.20-16.60L179.20-16.60Q180.70-16.40 181.70-16.30L181.70-16.30L180.60 1.30L180.60 1.30Q165.30 1.30 160.30-0.50L160.30-0.50L160.30-0.50Q156.10-2 153.95-4.40L153.95-4.40L153.95-4.40Q151.80-6.80 151.80-11.30L151.80-11.30ZM188.90-11.30L188.90-78L212.90-79.80L212.90-17.20L212.90-17.20Q214.80-16.80 216.30-16.60L216.30-16.60L216.30-16.60Q217.80-16.40 218.80-16.30L218.80-16.30L217.70 1.30L217.70 1.30Q202.40 1.30 197.40-0.50L197.40-0.50L197.40-0.50Q193.20-2 191.05-4.40L191.05-4.40L191.05-4.40Q188.90-6.80 188.90-11.30L188.90-11.30ZM223.60-30L223.60-30L223.60-30Q223.60-46.10 231.10-53.95L231.10-53.95L231.10-53.95Q238.60-61.80 255.40-61.80L255.40-61.80L255.40-61.80Q272.20-61.80 279.70-53.95L279.70-53.95L279.70-53.95Q287.20-46.10 287.20-30L287.20-30L287.20-30Q287.20-13.90 279.70-6.05L279.70-6.05L279.70-6.05Q272.20 1.80 255.40 1.80L255.40 1.80L255.40 1.80Q239 1.80 231.30-5.90L231.30-5.90L231.30-5.90Q223.60-13.60 223.60-30ZM249.40-39.20L249.40-39.20L249.40-15.70L253.10-15.70L253.10-15.70Q257.50-15.70 259.45-16.60L259.45-16.60L259.45-16.60Q261.40-17.50 261.40-20.80L261.40-20.80L261.40-44.30L257.70-44.30L257.70-44.30Q253.30-44.30 251.35-43.40L251.35-43.40L251.35-43.40Q249.40-42.50 249.40-39.20ZM297.80-15.80L294.80 4L309.80 4L313.80-15.80L297.80-15.80Z" fill="#000000"></path></g></g><style></style></svg>
+                    </animated.div>
+                    <animated.div style={{ transform: props.xy.interpolate(trans2) }} >
+                        <svg width="341.64002685546876px" height="156.0212432861328px" xmlns="http://www.w3.org/2000/svg" viewBox="79.17998657226562 -3.0106216430664006 341.64002685546876 156.0212432861328" style={{ background: "rgba(255, 255, 255, 0)" }} preserveAspectRatio="xMidYMid"><defs><filter id="editing-extrude-glow"><feFlood flood-color="#ffffff" result="flood-1"></feFlood><feMorphology operator="erode" radius="1" in="SourceAlpha" result="erode"></feMorphology><feComposite operator="in" in="flood-1" in2="erode" result="comp1"></feComposite><feConvolveMatrix order="0,0" divisor="1" in="comp1" result="convolve" kernelMatrix=""></feConvolveMatrix><feOffset dx="0" dy="0" in="convolve" result="extrude"></feOffset><feComposite operator="in" in="flood-1" in2="extrude" result="comp-extrude"></feComposite><feFlood flood-color="#e0dfdd" result="flood-2"></feFlood><feComposite operator="in" in="flood-2" in2="SourceAlpha" result="comp2"></feComposite><feMorphology operator="dilate" radius="1" in="comp2" result="dilate"></feMorphology><feOffset dx="0" dy="0" in="dilate" result="offset"></feOffset><feGaussianBlur in="offset" stdDeviation="5.8" result="blur"></feGaussianBlur><feComponentTransfer in="blur" result="shadow"><feFuncA type="linear" slope="0.8" intercept="-0.2"></feFuncA></feComponentTransfer><feMerge><feMergeNode in="shadow"></feMergeNode><feMergeNode in="comp-extrude"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge></filter></defs><g filter="url(#editing-extrude-glow)"><g transform="translate(131.4000015258789, 113.4078140258789)"><path d="M6 0L30 0L30-75L6-75L6 0ZM100.40-61.80L100.40-61.80L100.40-61.80Q129.20-61.80 129.20-42L129.20-42L129.20 0L117.20 0L110.40-6.80L110.40-6.80Q108.60-4.80 106.15-3.20L106.15-3.20L106.15-3.20Q103.70-1.60 100.90-0.50L100.90-0.50L100.90-0.50Q98.10 0.60 95.20 1.20L95.20 1.20L95.20 1.20Q92.30 1.80 89.60 1.80L89.60 1.80L89.60 1.80Q84.50 1.80 80.45 0.75L80.45 0.75L80.45 0.75Q76.40-0.30 73.60-2.60L73.60-2.60L73.60-2.60Q70.80-4.90 69.30-8.70L69.30-8.70L69.30-8.70Q67.80-12.50 67.80-18L67.80-18L67.80-18Q67.80-39.60 100.40-39.60L100.40-39.60L105.20-39.60L105.20-43.90L105.20-43.90Q103.30-44 101.75-44.10L101.75-44.10L101.75-44.10Q100.20-44.20 98.90-44.20L98.90-44.20L98.90-44.20Q85.40-44.20 75.60-40.90L75.60-40.90L72.70-58.10L72.70-58.10Q84.70-61.80 100.40-61.80ZM92-20.60L92-20.60L92-15.70L97-15.70L97-15.70Q102.20-15.70 103.80-16.90L103.80-16.90L103.80-16.90Q105.20-18.20 105.20-20L105.20-20L105.20-25.70L100.30-25.70L100.30-25.70Q96-25.70 94-24.80L94-24.80L94-24.80Q92-23.90 92-20.60ZM197.60 0L173.60 0L173.60-42L171.90-42L171.90-42Q170.30-42 168.85-41.90L168.85-41.90L168.85-41.90Q167.40-41.80 166.30-41.25L166.30-41.25L166.30-41.25Q165.20-40.70 164.60-39.60L164.60-39.60L164.60-39.60Q164-38.50 164-36.50L164-36.50L164 0L140 0L140-60L152-60L157.40-54.50L157.40-54.50Q164.70-61.80 176.60-61.80L176.60-61.80L176.60-61.80Q188.40-61.80 193.80-56.90L193.80-56.90L193.80-56.90Q201.30-61.80 210.80-61.80L210.80-61.80L210.80-61.80Q220.50-61.80 225.85-58.15L225.85-58.15L225.85-58.15Q231.20-54.50 231.20-48L231.20-48L231.20 0L207.20 0L207.20-42L205.50-42L205.50-42Q204.10-42 202.70-41.90L202.70-41.90L202.70-41.90Q201.30-41.80 200.25-41.35L200.25-41.35L200.25-41.35Q199.20-40.90 198.45-39.90L198.45-39.90L198.45-39.90Q197.70-38.90 197.60-37.20L197.60-37.20L197.60 0Z" fill="#000000"></path></g></g><style></style></svg>
+                    </animated.div>
+                    <animated.div style={{ transform: props.xy.interpolate(trans3) }}>
+                        <svg width="698.3850341796875px" height="156.0212432861328px" xmlns="http://www.w3.org/2000/svg" viewBox="-99.19251708984376 -3.0106216430664006 698.3850341796875 156.0212432861328" style={{ background: "rgba(255, 255, 255, 0)" }} preserveAspectRatio="xMidYMid"><defs><filter id="editing-extrude-glow"><feFlood flood-color="#ffffff" result="flood-1"></feFlood><feMorphology operator="erode" radius="1" in="SourceAlpha" result="erode"></feMorphology><feComposite operator="in" in="flood-1" in2="erode" result="comp1"></feComposite><feConvolveMatrix order="0,0" divisor="1" in="comp1" result="convolve" kernelMatrix=""></feConvolveMatrix><feOffset dx="0" dy="0" in="convolve" result="extrude"></feOffset><feComposite operator="in" in="flood-1" in2="extrude" result="comp-extrude"></feComposite><feFlood flood-color="#e0dfdd" result="flood-2"></feFlood><feComposite operator="in" in="flood-2" in2="SourceAlpha" result="comp2"></feComposite><feMorphology operator="dilate" radius="1" in="comp2" result="dilate"></feMorphology><feOffset dx="0" dy="0" in="dilate" result="offset"></feOffset><feGaussianBlur in="offset" stdDeviation="5.8" result="blur"></feGaussianBlur><feComponentTransfer in="blur" result="shadow"><feFuncA type="linear" slope="0.8" intercept="-0.2"></feFuncA></feComponentTransfer><feMerge><feMergeNode in="shadow"></feMergeNode><feMergeNode in="comp-extrude"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge></filter></defs><g filter="url(#editing-extrude-glow)"><g transform="translate(3.2531280517578125, 113.4078140258789)"><path d="M21.10 0L21.10 0L2.40 0L0-19.20L10-19.20L10-19.20Q13.50-19.20 14.80-20.30L14.80-20.30L14.80-20.30Q15.70-21.20 15.70-22.80L15.70-22.80L15.70-55.80L5.80-55.80L5.80-75L39.70-75L39.70-19.80L39.70-19.80Q39.70-10 34.95-5L34.95-5L34.95-5Q30.20 0 21.10 0ZM48.70-18L48.70-60L72.70-60L72.70-15.70L76.40-15.70L76.40-15.70Q80.80-15.70 82.75-16.60L82.75-16.60L82.75-16.60Q84.70-17.50 84.70-20.80L84.70-20.80L84.70-60L108.70-60L108.70 0L96.70 0L89.70-6.80L89.70-6.80Q82.50 1.80 69.20 1.80L69.20 1.80L69.20 1.80Q58.50 1.80 53.60-2.75L53.60-2.75L53.60-2.75Q48.70-7.30 48.70-18L48.70-18ZM120.70 0L120.70-60L132.70-60L138.70-54L138.70-54Q149.80-61.80 162.70-61.80L162.70-61.80L162.70-61.80Q171.20-61.80 175.95-58.15L175.95-58.15L175.95-58.15Q180.70-54.50 180.70-48L180.70-48L180.70 0L156.70 0L156.70-42L153-42L153-42Q148.90-42 146.80-41.15L146.80-41.15L146.80-41.15Q144.70-40.30 144.70-37.40L144.70-37.40L144.70 0L120.70 0ZM235.20 0L235.20 0L192.10 0L192.10-75L231.00-75L231.00-75Q241.80-75 246.40-70.80L246.40-70.80L246.40-70.80Q251.00-66.60 251.00-58.60L251.00-58.60L251.00-58.60Q251.00-50.50 248.10-46.15L248.10-46.15L248.10-46.15Q245.20-41.80 240.20-40.40L240.20-40.40L240.20-39.70L240.20-39.70Q254.70-37.20 254.70-19.90L254.70-19.90L254.70-19.90Q254.70-10.90 249.95-5.45L249.95-5.45L249.95-5.45Q245.20 0 235.20 0ZM225.50-29.90L225.50-29.90L216.10-29.90L216.10-17.60L225.30-17.60L225.30-17.60Q230.40-17.60 230.40-23.80L230.40-23.80L230.40-23.80Q230.40-29.90 225.50-29.90ZM223.70-58.60L223.70-58.60L216.10-58.60L216.10-47.40L223.50-47.40L223.50-47.40Q228.10-47.40 228.10-53L228.10-53L228.10-53Q228.10-58.60 223.70-58.60ZM286.50-20.40L286.50-20.40L286.50-16.20L286.50-16.20Q288.30-16 290.10-15.90L290.10-15.90L290.10-15.90Q291.90-15.80 293.70-15.80L293.70-15.80L293.70-15.80Q304.90-15.80 316.30-19.40L316.30-19.40L319.10-1.80L319.10-1.80Q305.60 1.80 292.50 1.80L292.50 1.80L292.50 1.80Q275.70 1.80 268.20-6.05L268.20-6.05L268.20-6.05Q260.70-13.90 260.70-30L260.70-30L260.70-30Q260.70-46.10 268.25-53.95L268.25-53.95L268.25-53.95Q275.80-61.80 292.50-61.80L292.50-61.80L292.50-61.80Q300.90-61.80 306.50-60.75L306.50-60.75L306.50-60.75Q312.10-59.70 315.55-57.25L315.55-57.25L315.55-57.25Q319-54.80 320.45-50.65L320.45-50.65L320.45-50.65Q321.90-46.50 321.90-40.20L321.90-40.20L321.90-40.20Q321.90-35 320.15-31.25L320.15-31.25L320.15-31.25Q318.40-27.50 314.30-25.10L314.30-25.10L314.30-25.10Q310.20-22.70 303.40-21.55L303.40-21.55L303.40-21.55Q296.60-20.40 286.50-20.40ZM286.50-39.20L286.50-39.20L286.50-34.30L291.40-34.30L291.40-34.30Q295.80-34.30 297.75-35.20L297.75-35.20L297.75-35.20Q299.70-36.10 299.70-39.40L299.70-39.40L299.70-44.30L294.80-44.30L294.80-44.30Q290.40-44.30 288.45-43.40L288.45-43.40L288.45-43.40Q286.50-42.50 286.50-39.20ZM328.50-30L328.50-30L328.50-30Q328.50-46.10 336.00-53.95L336.00-53.95L336.00-53.95Q343.50-61.80 360.30-61.80L360.30-61.80L360.30-61.80Q377.10-61.80 384.60-53.95L384.60-53.95L384.60-53.95Q392.10-46.10 392.10-30L392.10-30L392.10-30Q392.10-13.90 384.60-6.05L384.60-6.05L384.60-6.05Q377.10 1.80 360.30 1.80L360.30 1.80L360.30 1.80Q343.90 1.80 336.20-5.90L336.20-5.90L336.20-5.90Q328.50-13.60 328.50-30ZM354.30-39.20L354.30-39.20L354.30-15.70L358.00-15.70L358.00-15.70Q362.40-15.70 364.35-16.60L364.35-16.60L364.35-16.60Q366.30-17.50 366.30-20.80L366.30-20.80L366.30-44.30L362.60-44.30L362.60-44.30Q358.20-44.30 356.25-43.40L356.25-43.40L356.25-43.40Q354.30-42.50 354.30-39.20ZM459.30 0L435.30 0L435.30-42L433.60-42L433.60-42Q432.00-42 430.55-41.90L430.55-41.90L430.55-41.90Q429.10-41.80 428.00-41.25L428.00-41.25L428.00-41.25Q426.90-40.70 426.30-39.60L426.30-39.60L426.30-39.60Q425.70-38.50 425.70-36.50L425.70-36.50L425.70 0L401.70 0L401.70-60L413.70-60L419.10-54.50L419.10-54.50Q426.40-61.80 438.30-61.80L438.30-61.80L438.30-61.80Q450.10-61.80 455.50-56.90L455.50-56.90L455.50-56.90Q463.00-61.80 472.50-61.80L472.50-61.80L472.50-61.80Q482.20-61.80 487.55-58.15L487.55-58.15L487.55-58.15Q492.90-54.50 492.90-48L492.90-48L492.90 0L468.90 0L468.90-42L467.20-42L467.20-42Q465.80-42 464.40-41.90L464.40-41.90L464.40-41.90Q463.00-41.80 461.95-41.35L461.95-41.35L461.95-41.35Q460.90-40.90 460.15-39.90L460.15-39.90L460.15-39.90Q459.40-38.90 459.30-37.20L459.30-37.20L459.30 0Z" fill="#000000"></path></g></g><style></style></svg>
+                    </animated.div>
+                    <animated.div style={{ transform: props.xy.interpolate(trans4) }}>
+                        <svg width="315.67246704101564px" height="156.0212432861328px" xmlns="http://www.w3.org/2000/svg" viewBox="92.16376647949218 -3.0106216430664006 315.67246704101564 156.0212432861328" style={{ background: "rgba(255, 255, 255, 0)" }} preserveAspectRatio="xMidYMid"><defs><filter id="editing-extrude-glow"><feFlood flood-color="#ffffff" result="flood-1"></feFlood><feMorphology operator="erode" radius="1" in="SourceAlpha" result="erode"></feMorphology><feComposite operator="in" in="flood-1" in2="erode" result="comp1"></feComposite><feConvolveMatrix order="0,0" divisor="1" in="comp1" result="convolve" kernelMatrix=""></feConvolveMatrix><feOffset dx="0" dy="0" in="convolve" result="extrude"></feOffset><feComposite operator="in" in="flood-1" in2="extrude" result="comp-extrude"></feComposite><feFlood flood-color="#e0dfdd" result="flood-2"></feFlood><feComposite operator="in" in="flood-2" in2="SourceAlpha" result="comp2"></feComposite><feMorphology operator="dilate" radius="1" in="comp2" result="dilate"></feMorphology><feOffset dx="0" dy="0" in="dilate" result="offset"></feOffset><feGaussianBlur in="offset" stdDeviation="5.8" result="blur"></feGaussianBlur><feComponentTransfer in="blur" result="shadow"><feFuncA type="linear" slope="0.8" intercept="-0.2"></feFuncA></feComponentTransfer><feMerge><feMergeNode in="shadow"></feMergeNode><feMergeNode in="comp-extrude"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge></filter></defs><g filter="url(#editing-extrude-glow)"><g transform="translate(141, 113.4078140258789)"><path d="M48 0L72 0L72-75L48-75L48-48.50L30-48.50L30-75L6-75L6 0L30 0L30-26.50L48-26.50L48 0ZM112.40-61.80L112.40-61.80L112.40-61.80Q141.20-61.80 141.20-42L141.20-42L141.20 0L129.20 0L122.40-6.80L122.40-6.80Q120.60-4.80 118.15-3.20L118.15-3.20L118.15-3.20Q115.70-1.60 112.90-0.50L112.90-0.50L112.90-0.50Q110.10 0.60 107.20 1.20L107.20 1.20L107.20 1.20Q104.30 1.80 101.60 1.80L101.60 1.80L101.60 1.80Q96.50 1.80 92.45 0.75L92.45 0.75L92.45 0.75Q88.40-0.30 85.60-2.60L85.60-2.60L85.60-2.60Q82.80-4.90 81.30-8.70L81.30-8.70L81.30-8.70Q79.80-12.50 79.80-18L79.80-18L79.80-18Q79.80-39.60 112.40-39.60L112.40-39.60L117.20-39.60L117.20-43.90L117.20-43.90Q115.30-44 113.75-44.10L113.75-44.10L113.75-44.10Q112.20-44.20 110.90-44.20L110.90-44.20L110.90-44.20Q97.40-44.20 87.60-40.90L87.60-40.90L84.70-58.10L84.70-58.10Q96.70-61.80 112.40-61.80ZM104-20.60L104-20.60L104-15.70L109-15.70L109-15.70Q114.20-15.70 115.80-16.90L115.80-16.90L115.80-16.90Q117.20-18.20 117.20-20L117.20-20L117.20-25.70L112.30-25.70L112.30-25.70Q108-25.70 106-24.80L106-24.80L106-24.80Q104-23.90 104-20.60ZM152 0L152-60L164-60L170-54L170-54Q181.10-61.80 194-61.80L194-61.80L194-61.80Q202.50-61.80 207.25-58.15L207.25-58.15L207.25-58.15Q212-54.50 212-48L212-48L212 0L188 0L188-42L184.30-42L184.30-42Q180.20-42 178.10-41.15L178.10-41.15L178.10-41.15Q176-40.30 176-37.40L176-37.40L176 0L152 0Z" fill="#000000"></path></g></g><style></style></svg>
+                    </animated.div>
 
-                <img
-                    src="https://picsum.photos/200/300"
-                    alt="test"
-                    className="parallax"
-                    style={{
-                        height: '300px',
-                        width: '400px',
-                        position: 'absolute', left: '45%', top: '40%',
-                        transform: `translatey(${offset * 1}px)`,
-                    }}
-                />
-                <img
-                    src="https://picsum.photos/200/300"
-                    alt="test"
-                    className="parallax"
-                    style={{
-                        height: '300px',
-                        width: '400px',
-                        position: 'absolute', left: '52%', top: '35%',
-                        transform: `translate(${offset * -1}px, ${offset * 1}px)`,
-                    }}
-                />
-                <img
-                    src="https://picsum.photos/200/300"
-                    alt="test"
-                    className="parallax"
-                    style={{
-                        height: '300px',
-                        width: '400px',
-                        position: 'absolute', left: '30%', top: '45%',
-                        transform: `translate(${offset * 2}px, ${offset * -1}px)`,
-                    }}
-                />
-
-                <img
-                    src="https://picsum.photos/200/300"
-                    alt="test"
-                    className="parallax"
-                    style={{
-                        height: '300px',
-                        width: '400px',
-                        position: 'absolute', left: '40%', top: '55%',
-                        transform: `translateY(${offset * -1}px)`,
-                    }}
-                />
-
-                <img
-                    src="https://picsum.photos/200/300"
-                    alt="test"
-                    className="parallax"
-                    style={{
-                        height: '300px',
-                        width: '400px',
-                        position: 'absolute', left: '50%', top: '50%',
-                        transform: `translate(${offset * -2}px, ${offset * -1}px)`,
-                    }}
-                />
-                <div className="text-wrapper">
-                    <h1
-                        className="headline"
-                        style={{
-                            position: 'center',
-                            transform: `translateY(${offset * 1}px)`,
-                            fontSize: `${0.0165 * (offset + 450)}rem`,
-                            fontWeight: `${1.5 * (offset + 100)}`
-                        }}>
-                        JunBeom Han
-                    </h1>
-                    <h2 className="sub-headline"
-                        style={{
-                            fontSize: "3rem",
-                            transform: `translateY(${offset * -1}px)`,
-                        }}
-                    >
-                        Seoul · Vancouver
-                        </h2>
                 </div>
             </section>
-        </div>
+        </div >
     );
 }
