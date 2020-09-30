@@ -11,7 +11,6 @@ import Skills from './Sections/Skills';
 import Education from './Sections/Education';
 import Contact from './Sections/Contact';
 import Footer from './Sections/Footer';
-import Switch from "react-switch";
 import './App.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
 
@@ -56,7 +55,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+        <ThemeProvider>
           <GlobalStyles />
           {this.Gradients}
           <Navbar></Navbar>
