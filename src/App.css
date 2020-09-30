@@ -18,21 +18,31 @@ body {
         display: inline;
     }
     .navItem {
-        margin-left: 1em;
+        margin-left: 2em;
+        padding: 0.75rem;
     }
 }
 
 .navbar span {
     font-family: 'Sacramento', cursive;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     color: white;
     margin-left: 1em;
 }
 
 .navItem {
-    padding: 0.75rem;
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+    padding-bottom: 0.25rem;
     font-size: 0.75rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+}
+
+.active {
+    color: #000 !important;
+    font-weight: bold;
+    border-bottom: 2px solid black;
 }
 
 /* Main Section */
@@ -142,13 +152,6 @@ body {
     /* background-color: #4F4F4F; */
 }
 
-/* React Scroll */
-
-.active {
-    color: #000 !important;
-    font-weight: 600;
-}
-
 /* Theme Button */
 
 .social-icon {
@@ -157,7 +160,6 @@ body {
     justify-content: center;
     height: 3rem;
     width: 3rem;
-    /* background-color: #fff; */
     color: #000;
     border-radius: 100%;
     font-size: 1.5rem;
@@ -226,7 +228,6 @@ body {
     background-repeat: no-repeat;
     will-change: transform;
 }
-
 
 .cloud-small {
     opacity: 1;

@@ -3,7 +3,7 @@ import { Link, animateScroll as scroll } from 'react-scroll';
 import { Controller } from 'react-spring';
 import ThemeButton from '../Components/AppThemeHook';
 
-const SCROLL_OFFSET = -400;
+const SCROLL_OFFSET = -200;
 
 class Navbar extends React.Component {
   state = {
@@ -60,18 +60,23 @@ class Navbar extends React.Component {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav  ml-auto mx-auto">
-            <li><Link activeClass="active" className="navItem" to="about" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.7)" }}> ABOUT </Link></li>
-            <li><Link activeClass="active" className="navItem" to="projects" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.7)" }}> PROJECTS </Link></li>
-            <li><Link activeClass="active" className="navItem" to="experience" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.7)" }}> EXPERIENCE </Link></li>
-            <li><Link activeClass="active" className="navItem" to="skills" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.7)" }}> SKILLS </Link></li>
-            <li><Link activeClass="active" className="navItem" to="education" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.7)" }}> EDUCATION </Link></li>
-            <li><Link activeClass="active" className="navItem" to="contact" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.7)" }}> CONTACT </Link></li>
+            <li><Link activeClass="active" className="navItem" to="about" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.5)" }}> ABOUT </Link></li>
+            <li><Link activeClass="active" className="navItem" to="experience" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.5)" }}> EXPERIENCE </Link></li>
+            <li><Link activeClass="active" className="navItem" to="education" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.5)" }}> EDUCATION </Link></li>
+            <li><Link activeClass="active" className="navItem" to="projects" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.5)" }}> PROJECTS </Link></li>
+            <li><Link activeClass="active" className="navItem" to="skills" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.5)" }}> SKILLS </Link></li>
+            {/* <li><Link activeClass="active" className="navItem" to="contact" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.7)" }}> CONTACT </Link></li> */}
           </ul>
         </div>
         <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
           <ul className="navbar-nav ml-auto">
             <li className="social-icons nav-item">
-              {/* <ThemeButton> </ThemeButton> */}
+              <i className="social-icon fas fa-paper-plane"></i>
+              <i className="social-icon fab fa-linkedin"></i>
+              <i className="social-icon fab fa-github"></i>
+              {/* <span> GITHUB </span>
+              <span> LINKEDIN </span>
+              <span> CONTACT </span> */}
             </li>
           </ul>
         </div>
