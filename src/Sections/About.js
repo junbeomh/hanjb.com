@@ -1,10 +1,19 @@
 import React from 'react';
+import ResumeItem from '../Components/ResumeItem';
+
+const PAGE_NAME = "ABOUT"
 
 class About extends React.Component {
 
     render() {
         return (
-            <div className="about-section" id="about"> </div>
+            <section id="about">
+                <div className="resume-content">
+                    <div className='resume-content-container'>
+                    <h1 className="resume-content-title"> {PAGE_NAME} </h1>
+                    </div>
+                </div>
+            </section>
         );
     }
 }
