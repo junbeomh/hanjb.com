@@ -1,7 +1,5 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
 function ResumeItem(props) {
     return (
@@ -18,17 +16,17 @@ function ResumeItem(props) {
                     <ul className="resume-item-details">
                         <li>
                             <span>
-                                -Waited end mutual missed myself the little sister one. So in pointed or chicken cheered neither spirits invited.
+                                Waited end mutual missed myself the little sister one. So in pointed or chicken cheered neither spirits invited.
                             </span>
                         </li>
                         <li>
                             <span>
-                                -Marianne and him laughter civility formerly handsome sex use prospect. Hence we doors is given rapid scale above am.
+                                Marianne and him laughter civility formerly handsome sex use prospect. Hence we doors is given rapid scale above am.
                             </span>
                         </li>
                         <li>
                             <span>
-                                -Difficult ye mr delivered behaviour by an. If their woman could do wound on. You folly taste hoped their above are and but.
+                                Difficult ye mr delivered behaviour by an. If their woman could do wound on. You folly taste hoped their above are and but.
                             </span>
                         </li>
 
