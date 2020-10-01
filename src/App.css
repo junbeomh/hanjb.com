@@ -8,6 +8,9 @@ body {
 }
 
 /* Navbar */
+.navbar {
+    background-color: none;
+}
 
 .navbar-brand {
     display: none;
@@ -15,6 +18,9 @@ body {
 }
 
 @media screen and (max-width: 991px) {
+    .navbar {
+        background-color: rgba(255, 255, 255, 0.7);
+    }
     .navbar-brand {
         display: inline;
     }
@@ -211,31 +217,50 @@ body {
     margin: 0 auto;    
 }
 
+.resume-timeline-container {
+    display: relative;
+    flex-flow: column;
+    align-items: center;
+    margin: 0 auto;
+    width: 80%;
+    margin-top: 5rem;
+}
+
+@media screen and (max-width: 991px) {
+    .resume-timeline-container {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .resume-timeline-container {
+        width: 100%;
+    }
+}
+
 .resume-items {
     margin-top: 5rem;
 }
 
 
 .resume-item {
-    width: 45rem;
+    width: 80%;
     border-radius: 10px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.7);
     padding: 2rem;
     margin-bottom: 2rem;
 }
 
 @media screen and (max-width: 991px) {
     .resume-item {
-        width: 40rem;
+        width: 100%;
         border-radius: 10px;
-        padding: 3rem;
+        padding: 2rem;
     }
 }
 
 @media screen and (max-width: 480px) {
     .resume-item-wrapper {
-        /* padding-left: 2.5rem; */
-        /* padding-right: 1rem; */
     }
     .resume-item {
         width: 20rem;
@@ -243,7 +268,6 @@ body {
         padding: 2rem;
     }
 }
-
 
 .resume-item-header {
     display: flex;
@@ -263,8 +287,8 @@ body {
 }
 
 .resume-item-details{
-    list-style: none;
-    padding-left: 0%;
+    list-style: disc;
+    padding-left: 3%;
 }
 
 
@@ -275,4 +299,25 @@ body {
 
 .resume-content-title {
     margin-top: 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.example-enter {
+    opacity: 0.01;
+  }
+  
+  .example-enter.example-enter-active {
+    opacity: 1;
+    transition: opacity 1000ms ease-in;
+  }
+  
+  .example-leave {
+    opacity: 1;
+  }
+  
+  .example-leave.example-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+  }
