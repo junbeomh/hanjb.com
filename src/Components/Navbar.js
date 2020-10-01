@@ -66,14 +66,43 @@ function Navbar() {
       <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul className="navbar-nav ml-auto">
           <li className="social-icons nav-item">
-            {/* <i className="social-icon fas fa-paper-plane"></i>
-              <i className="social-icon fab fa-linkedin"></i>
-              <i className="social-icon fab fa-github"></i> */}
+            <i className="social-icon fas fa-paper-plane"></i>
+            <i className="social-icon fab fa-linkedin"></i>
+            <i className="social-icon fab fa-github"></i>
             <label>
               <Switch
                 onChange={toggleTheme}
                 checked={checked}
                 className="react-switch"
+                handleDiameter={26}
+                offColor="#131862"
+                onColor="#ef8e38 "
+                offHandleColor="#7de2fc"
+                onHandleColor="#000"
+                height={36}
+                width={60}
+                uncheckedIcon={
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      height: "100%",
+                      color: "orange",
+                    }}
+                  >  🌙 </div>
+                }
+
+                checkedIcon={
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      height: "100%",
+                      color: "orange",
+                    }} > ☀️   </div>
+                }
               />
             </label>
           </li>
@@ -83,4 +112,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default Navbar;    
