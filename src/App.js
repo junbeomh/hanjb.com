@@ -2,7 +2,7 @@ import React, { useReducer, createContext } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { initialState, reducer } from "./Reducer";
 import { GlobalStyles } from './global';
-import Navbar from "./Components/Navbar";
+import CustomNavbar from "./Components/Navbar";
 import Main from './Sections/Main';
 import About from './Sections/About';
 import Projects from './Sections/Projects';
@@ -55,14 +55,14 @@ function App() {
       <ThemeProvider theme={currentTheme}>
         <AppContext.Provider value={{ ...state, dispatch }}>
           <GlobalStyles/>
+          <CustomNavbar></CustomNavbar>
           <Gradients> </Gradients>
-          <Navbar></Navbar>
           <Main></Main>
           <About></About>
+          <Projects></Projects>
           <Experience></Experience>
           <Education></Education>
-          <Projects></Projects>
-          <Skills></Skills>
+          {/* <Skills></Skills> */}
           <Footer></Footer>
         </AppContext.Provider>
       </ThemeProvider>
