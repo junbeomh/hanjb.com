@@ -3,11 +3,12 @@ import ResumeItem from '../Components/ResumeItem';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import ScrollAnimation from 'react-animate-on-scroll';
+import "animate.css/animate.min.css";
 
 const PAGE_NAME = "EXPERIENCE";
 
 class Experience extends React.Component {
-
+animate__wobble
     render() {
         return (
             <section id="experience">
@@ -16,8 +17,8 @@ class Experience extends React.Component {
                     <div className='resume-timeline-container'>
                         <div className="resume-item-timeline">
                             <ScrollAnimation
-                                animateIn='fadeIn'
-                                animateOut='fadeOut'>
+                                animateIn='animate__fadeInUp'
+                                animateOut='animate__fadeInUp'>
                                 <VerticalTimeline>
                                     <VerticalTimelineElement
                                         position="left"
