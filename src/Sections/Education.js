@@ -12,7 +12,7 @@ class Education extends React.Component {
                     <div className='resume-content-container'>
                         <h1 className="resume-content-title"> {PAGE_NAME} </h1>
                         <div className="resume-items">
-                        <ScrollAnimation animateIn='fadeIn'
+                            <ScrollAnimation animateIn='fadeIn'
                                 animateOut='fadeOut'>
                                 <ResumeItem></ResumeItem>
                             </ScrollAnimation>
