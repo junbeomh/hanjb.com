@@ -3,7 +3,7 @@ body {
     padding: 0 !important;
     height: 100%;
     background-color: #f2eedd;
-    background-image: linear-gradient(to bottom, #7de2fc 0%, #dcf5c4 100%);
+    background-image: linear-gradient(to bottom, #7de2fc 0%, #a0e7a0 100%);
     min-height: 500vh;
 }
 
@@ -11,9 +11,10 @@ body {
 
 .navbar-brand {
     display: none;
+    color: rgba(0, 0, 0, 0.5);
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 991px) {
     .navbar-brand {
         display: inline;
     }
@@ -23,17 +24,22 @@ body {
     }
 }
 
+@media screen and (max-width: 991px) {
+    .navbar-brand {
+        display: inline;
+    }
+}
+
 .navbar span {
     font-family: 'Sacramento', cursive;
     font-size: 1.75rem;
-    color: white;
+    font-weight: bold;
     margin-left: 1em;
 }
 
 .navItem {
     padding-left: 0.7rem;
     padding-right: 0.7rem;
-    padding-bottom: 0.25rem;
     font-size: 0.75rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 600;
@@ -42,22 +48,73 @@ body {
 .active {
     color: #000 !important;
     font-weight: bold;
+    /* border-bottom: 2px solid black; */
+}
+
+.social-icons {
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.social-icon {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 1.5rem;
+    margin-left: 0.75rem;
+}
+
+.social-icon:hover {
+    color: #000;
     border-bottom: 2px solid black;
 }
 
-/* Main Section */
-
-.main-section {
-    height: 100vh;
-    /* background-image: src('./assets/img/background.svg.png'); */
-    /* background-color: #FFFF; */
+.theme-switch-toggle {
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
 }
 
-@media screen and (max-width: 992px) {
-    .main-section {
-        height: 100vh;
-        color: #FFFF;
+.react-switch {
+    vertical-align: bottom;
+}
+
+@media screen and (max-width: 991px) {
+    .social-icons {
+        margin-left: 1.5rem;
+    }    
+}
+
+
+.main-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* @media screen and (max-width: 992px) {
+    .main-name-container-big {
+        display: none;
     }
+    .main-name-container-small {
+        display: visible;
+    }
+} */
+
+.main-name-container-big {
+    display: visible;
+}
+
+.main-name-container-small {
+    display: none;
+}
+
+.main-name {
+    font-family: 'Sacramento', cursive;
+    font: italic serif;
+    fill: black;
+    font-weight: 600;
 }
 
 .main-section .content {
@@ -68,7 +125,7 @@ body {
     transform: translate(-50%, -50%);
 }
 
-.hero {
+.main-section-container {
     width: 100%;
     height: 100vh;
     display: flex;
@@ -78,100 +135,67 @@ body {
     overflow: hidden;
 }
 
-.text-wrapper {
-    text-align: center;
-}
-
-.headline {
-    color: black;
-    font-weight: 100;
-    line-height: 0.5;
-}
-
-.sub-headline {
-    text-transform: uppercase;
-    color: black;
-}
-
-.parallax {
+.cloud-small, .cloud-big {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
+    border-radius: 5px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 
-/* About Section */
-
-.about-section {
-    /* height: 70vh; */
-    /* background-color: #4F4F4F; */
-}
-
-/* Project Section */
-
-.projects-section {
-    /* height: 100vh; */
-    /* background-color: #D0D0D0; */
-}
-
-/* Experience Section */
-
-.experience-section {
-    /* height: 100vh; */
-    /* background-color: #B5B5B5; */
-}
-
-/* Skills Section */
-
-.skills-section {
-    /* height: 70vh; */
-    /* background-color: #9A9A9A; */
-}
-
-/* Education Section */
-
-.education-section {
-    /* height: 100vh; */
-    /* background-color: #808080; */
-}
-
-/* Contact Section */
-
-.contact-section {
-    /* height: 50vh; */
-    /* background-color: #676767; */
-}
-
-/* Footer Section */
-
-.footer-section {
-    /* height: 20vh; */
-    /* background-color: #4F4F4F; */
-}
-
-/* Theme Button */
-
-.social-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 3rem;
-    width: 3rem;
-    color: #000;
-    border-radius: 100%;
-    font-size: 1.5rem;
-    margin-top: 5%;
-    margin-right: 1rem;
-    /* border: 1px solid #fff; */
-}
-
-/* .social-icons .social-icon:hover {
-    background-color: #000; 
-    /* color: #000;
+/* @media screen and (max-width: 992px) {
+    .cloud-small {
+        display: none;
+    }
+    .hello {
+        display: none;
+    }
+    .i-am {
+        display: none;
+    }
 } */
+
+/* Icons made by Freepik from www.flaticon.com */
+
+.cloud-small {
+    opacity: 1;
+    width: 40ch;
+    height: 40ch;
+    /* min-width: 15ch;
+    min-height: 15ch;
+    width: 25vw;
+    height: 25vw;
+    max-width: 50ch;
+    max-height: 50ch; */
+    background-image: url(https://image.flaticon.com/icons/svg/414/414927.svg);
+}
+
+/* Icons made by Freepik from www.flaticon.com */
+
+.cloud-big {
+    opacity: 1;
+    width: 60ch;
+    height: 50ch;
+    /* min-width: 35ch;
+    min-height: 30ch;
+    width: 35vw;
+    height: 25vw;
+    max-width: 70ch;
+    max-height: 60ch; */
+    background-image: url(https://image.flaticon.com/icons/svg/414/414927.svg);
+}
+
+.earth {
+    opacity: 1;
+    width: 100ch;
+    height: 100ch;
+}
+
+.satellite {
+    opacity: 1;
+    width: 20ch;
+    height: 30ch;
+}
 
 /* Resume Items */
 
@@ -184,32 +208,65 @@ body {
     display: flex;
     flex-flow: column;
     align-items: center;
-    max-width: 1120px;
-    width: 90%;
-    margin: 0 auto;
-    max-width: 50rem;
-}
-
-.resume-content-container-wrapper {
-    position: relative;
-    margin: 50px 0 45px;
-    border-radius: 1%;
+    margin: 0 auto;    
 }
 
 .resume-items {
-    margin-bottom: 24px;
+    margin-top: 5rem;
 }
 
-.resume-items:first-child {
-    margin-top: 1.5rem;
-}
 
 .resume-item {
-    display: relative;
-    flex: 1;
-    margin: 0 1rem;
+    width: 45rem;
     border-radius: 10px;
+    background-color: white;
+    padding: 2rem;
+    margin-bottom: 2rem;
 }
+
+@media screen and (max-width: 991px) {
+    .resume-item {
+        width: 40rem;
+        border-radius: 10px;
+        padding: 3rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .resume-item-wrapper {
+        /* padding-left: 2.5rem; */
+        /* padding-right: 1rem; */
+    }
+    .resume-item {
+        width: 20rem;
+        border-radius: 10px;
+        padding: 2rem;
+    }
+}
+
+
+.resume-item-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.resume-item-header-date{
+    display: inline-block;
+}
+
+.resume-item-sub-header {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+.resume-item-sub-header h5 {
+    color: rgba(0, 0, 0, 0.808);
+}
+
+.resume-item-details{
+    list-style: none;
+    padding-left: 0%;
+}
+
 
 .resume-item .date {
     display: relative;
@@ -218,42 +275,4 @@ body {
 
 .resume-content-title {
     margin-top: 8rem;
-}
-
-.cloud-small, .cloud-big {
-    position: absolute;
-    border-radius: 5px;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    will-change: transform;
-}
-
-.cloud-small {
-    opacity: 1;
-    width: 40ch;
-    height: 40ch;
-    background-image: url(https://image.flaticon.com/icons/svg/414/414927.svg);
-}
-
-.cloud-big {
-    opacity: 1;
-    width: 60ch;
-    height: 40ch;
-    background-image: url(https://image.flaticon.com/icons/svg/414/414927.svg);
-}
-
-.main-container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.main-name {
-    font-family: 'Sacramento', cursive;
-    font: italic serif;
-    fill: black;
-    font-weight: 600;
 }
