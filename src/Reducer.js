@@ -1,4 +1,4 @@
-import { theme } from "./theme";
+import { theme } from "./Theme";
 
 export const initialState = {
   currentTheme: theme.light
