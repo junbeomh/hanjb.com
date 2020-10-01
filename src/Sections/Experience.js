@@ -1,5 +1,8 @@
 import React from 'react';
 import ResumeItem from '../Components/ResumeItem';
+import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
+import 'react-vertical-timeline-component/style.min.css';
+import ScrollAnimation from 'react-animate-on-scroll';
 
 const PAGE_NAME = "EXPERIENCE";
 
@@ -7,38 +10,52 @@ class Experience extends React.Component {
 
     render() {
         return (
-            <section className="experience-section" id="experience">
+            <section id="experience">
                 <div className="resume-content">
-                    <div className='resume-content-container'>
-                        <h1> {PAGE_NAME} </h1>
-                        <div className='resume-content-container-wrapper' style={{backgroundColor: "white", padding: "1rem"}}>
-                            <ul className='resume-items'>
-                                <ResumeItem
-                                    src='https://picsum.photos/200/300'
-                                    text='Explore the hidden waterfall deep inside the Amazon Jungle'
-                                    label='Adventure'
-                                    path='/services'
-                                />
-                            </ul>
-                            <ul className='resume-items'>
-                                <ResumeItem
-                                    src='https://picsum.photos/200/300'
-                                    text='Explore the hidden waterfall deep inside the Amazon Jungle'
-                                    label='Adventure'
-                                    path='/services'
-                                />
-                            </ul>
-                            <ul className='resume-items'>
-                                <ResumeItem
-                                    src='https://picsum.photos/200/300'
-                                    text='Explore the hidden waterfall deep inside the Amazon Jungle'
-                                    label='Adventure'
-                                    path='/services'
-                                />
-                            </ul>
+                    <h1 className="resume-content-title"> {PAGE_NAME} </h1>
+                    <div className='resume-timeline-container'>
+                        <div className="resume-item-timeline">
+                            <ScrollAnimation
+                                animateIn='fadeIn'
+                                animateOut='fadeOut'>
+                                <VerticalTimeline>
+                                    <VerticalTimelineElement
+                                        position="left"
+                                        className="vertical-timeline-element--work"
+                                        date="2011 - present"
+                                        iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+                                    >
+                                        <h3 className="vertical-timeline-element-title">Creative Director</h3>
+                                        <h4 className="vertical-timeline-element-subtitle">Miami, FL</h4>
+                                        <p>  Creative Direction, User Experience, Visual Design, Project Management, Team Leading  </p>
+                                    </VerticalTimelineElement>
+                                    <VerticalTimelineElement
+                                        className="vertical-timeline-element--work"
+                                        date="2010 - 2011"
+                                        iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+                                    >
+                                        <h3 className="vertical-timeline-element-title">Art Director</h3>
+                                        <h4 className="vertical-timeline-element-subtitle">San Francisco, CA</h4>
+                                        <p> Creative Direction, User Experience, Visual Design, SEO, Online Marketing  </p>
+                                    </VerticalTimelineElement>
+                                    <VerticalTimelineElement
+                                        position="left"
+
+                                        className="vertical-timeline-element--work"
+                                        date="2008 - 2010"
+                                        iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+                                    >
+                                        <h3 className="vertical-timeline-element-title">Web Designer</h3>
+                                        <h4 className="vertical-timeline-element-subtitle">Los Angeles, CA</h4>
+                                        <p>  User Experience, Visual Design   </p>
+                                    </VerticalTimelineElement>
+                                </VerticalTimeline>
+                            </ScrollAnimation>
+
                         </div>
                     </div>
                 </div>
+
             </section>);
     }
 }
