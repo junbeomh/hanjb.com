@@ -1,88 +1,86 @@
-import React from 'react';
+import React, { useState, useContext, useEffect, } from 'react';
 import { Link, animateScroll as scroll } from 'react-scroll';
-import { Controller } from 'react-spring';
 import ThemeButton from '../Components/AppThemeHook';
+import { AppContext } from '../App';
+import Switch from "react-switch";
 
 const SCROLL_OFFSET = -200;
 
-class Navbar extends React.Component {
-  state = {
-    showButton: false,
-    triggerThreshold: null,
-  }
+function Navbar() {
 
-  animations = new Controller({ opacity: 0 });
+  const [showButton, setButtonVisibility] = useState(false);
+  const [checked, setChecked] = useState(false);
 
+  const { dispatch } = useContext(AppContext);
 
-  componentDidMount() {
-    let aboutHeight = document.getElementById('main').clientHeight;
+  const toggleTheme = () => {
+    dispatch({ type: "toggleTheme" });
+    setChecked(!checked);
+  };
 
-    this.setState({
-      triggerThreshold: aboutHeight - (-SCROLL_OFFSET)
-    })
-    window.addEventListener('scroll', this.showText);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.showText);
-  }
-
-  showText = () => {
-    if (window.scrollY >= this.state.triggerThreshold) {
-      this.setState({
-        showButton: true
-      });
-    } else {
-      this.setState({
-        showButton: false
-      });
+  useEffect(() => {
+    const aboutHeight = document.getElementById('main').clientHeight;
+    const showText = () => {
+      if (window.scrollY >= aboutHeight) {
+        setButtonVisibility(true);
+      } else {
+        setButtonVisibility(false);
+      }
     }
-  }
+    // subscribe event
+    window.addEventListener("scroll", showText);
+    return () => {
+      // unsubscribe event
+      window.removeEventListener("scroll", showText);
+    };
+  }, []);
 
-  scrollToTop = () => {
+  const scrollToTop = () => {
     scroll.scrollToTop();
   };
 
 
-  render() {
-    return (
-      <nav className="navbar fixed-top navbar-expand-lg navbar-light" style={{ backgroundColor: "none" }}>
-        <div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-          <ul className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <span className="nav-brand2" href="#" style={this.state.showButton ? { color: "#000" } : { color: "#7de2fc" }} onClick={this.scrollToTop}>JunBeom Han</span>
-            </li>
-          </ul>
-        </div>
-        <span className="navbar-brand" id="navbarName" href="#" style={{ color: "black" }} onClick={this.scrollToTop}>JunBeom Han</span>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <i className="fas fa-bars"></i>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav  ml-auto mx-auto">
-            <li><Link activeClass="active" className="navItem" to="about" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.5)" }}> ABOUT </Link></li>
-            <li><Link activeClass="active" className="navItem" to="experience" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.5)" }}> EXPERIENCE </Link></li>
-            <li><Link activeClass="active" className="navItem" to="education" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.5)" }}> EDUCATION </Link></li>
-            <li><Link activeClass="active" className="navItem" to="projects" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.5)" }}> PROJECTS </Link></li>
-            <li><Link activeClass="active" className="navItem" to="skills" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.5)" }}> SKILLS </Link></li>
-            {/* <li><Link activeClass="active" className="navItem" to="contact" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.7)" }}> CONTACT </Link></li> */}
-          </ul>
-        </div>
-        <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
-          <ul className="navbar-nav ml-auto">
-            <li className="social-icons nav-item">
-              <i className="social-icon fas fa-paper-plane"></i>
+  return (
+    <nav className="navbar fixed-top navbar-expand-lg navbar-light" style={{ backgroundColor: "none" }}>
+      <div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <ul className="navbar-nav mr-auto">
+          <li className="nav-item">
+            <span className="nav-brand2" href="#" style={showButton ? { color: "#000" } : { color: "#7de2fc" }} onClick={scrollToTop}>JunBeom Han</span>
+          </li>
+        </ul>
+      </div>
+      <span className="navbar-brand" id="navbarName" href="#" style={{ color: "black" }} onClick={scrollToTop}>JunBeom Han</span>
+      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i className="fas fa-bars"></i>
+      </button>
+      <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul className="navbar-nav  ml-auto mx-auto">
+          <li><Link activeClass="active" className="navItem" to="about" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.5)" }}> ABOUT </Link></li>
+          <li><Link activeClass="active" className="navItem" to="experience" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.5)" }}> EXPERIENCE </Link></li>
+          <li><Link activeClass="active" className="navItem" to="education" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.5)" }}> EDUCATION </Link></li>
+          <li><Link activeClass="active" className="navItem" to="projects" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.5)" }}> PROJECTS </Link></li>
+          <li><Link activeClass="active" className="navItem" to="skills" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.5)" }}> SKILLS </Link></li>
+          {/* <li><Link activeClass="active" className="navItem" to="contact" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.7)" }}> CONTACT </Link></li> */}
+        </ul>
+      </div>
+      <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul className="navbar-nav ml-auto">
+          <li className="social-icons nav-item">
+            {/* <i className="social-icon fas fa-paper-plane"></i>
               <i className="social-icon fab fa-linkedin"></i>
-              <i className="social-icon fab fa-github"></i>
-              {/* <span> GITHUB </span>
-              <span> LINKEDIN </span>
-              <span> CONTACT </span> */}
-            </li>
-          </ul>
-        </div>
-      </nav>
-    );
-  }
+              <i className="social-icon fab fa-github"></i> */}
+            <label>
+              <Switch
+                onChange={toggleTheme}
+                checked={checked}
+                className="react-switch"
+              />
+            </label>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  );
 }
 
 export default Navbar;

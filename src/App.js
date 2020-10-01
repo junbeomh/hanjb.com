@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useReducer, createContext } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { lightTheme, darkTheme } from './theme';
+import { initialState, reducer } from "./Reducer";
 import { GlobalStyles } from './global';
 import Navbar from "./Components/Navbar";
 import Main from './Sections/Main';
@@ -14,14 +14,13 @@ import Footer from './Sections/Footer';
 import './App.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
 
+export const AppContext = createContext();
 
-class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {  }
-  }
+function App() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const { currentTheme } = state;
 
-  Gradients = () => (
+  const Gradients = () => (
     <svg width="50" height="50" version="1.1" className="hidden">
       <defs>
         <linearGradient id="gradient-1" x1="0" x2="0" y1="0" y2="1">
@@ -51,13 +50,12 @@ class App extends React.Component {
       </defs>
     </svg>
   );
-
-  render() {
-    return (
-      <div className="App">
-        <ThemeProvider>
-          <GlobalStyles />
-          {this.Gradients}
+  return (
+    <div className="App">
+      <ThemeProvider theme={currentTheme}>
+        <AppContext.Provider value={{ ...state, dispatch }}>
+          <GlobalStyles/>
+          <Gradients> </Gradients>
           <Navbar></Navbar>
           <Main></Main>
           <About></About>
@@ -66,10 +64,12 @@ class App extends React.Component {
           <Projects></Projects>
           <Skills></Skills>
           <Footer></Footer>
-        </ThemeProvider>
-      </div>
-    );
-  }
+        </AppContext.Provider>
+      </ThemeProvider>
+    </div>
+  );
 }
+
+
 
 export default App;
