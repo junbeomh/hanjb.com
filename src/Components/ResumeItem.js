@@ -5,22 +5,37 @@ import Col from 'react-bootstrap/Col';
 
 function ResumeItem(props) {
     return (
-        <>
-            <li className='resume-item'>
-                <Container style={{marginLeft: "5em"}}>
-                    <Row>
-                        <Col sm={7}> <h3 className='company'> PICCOLO SOFTWARE INC. </h3></Col>
-                        <Col sm={3}> <p className='date'> DEC. 2020 - DEC. 2020</p></Col>
-                    </Row>
-                    <Row>
-                        <Col  sm={5} className='position'> <h5> Software Developer Co-op </h5> </Col>
-                    </Row>
-                    <Row>
-                        <Col sm={10} className='description'> <p> sdasdasdaasd asd jalksd lka dlkajslkd alksd sdasdasdaasd asd jalksd lka dlkajslkd alksdsdasdasdaasd asd jalksd lka dlkajslkd alksdsdasdasdaasd asd jalksd lka dlkajslkd alksd</p></Col>
-                    </Row>
-                </Container>
-            </li>
-        </>
+        <div className="resume-item-wrapper">
+            <Container className="resume-item">
+                <div className="resume-item-header">
+                    <h3 > PICCOLO SOFTWARE INC. </h3>
+                    <h6 > <span className="resume-item-header-date"> DEC. 2020 - </span> <span className="resume-item-header-date">  DEC. 2020 </span> </h6>
+                </div>
+
+                <div className="resume-item-sub-header"> <h5> Software Developer Co-op </h5> </div>
+
+                <div>
+                    <ul className="resume-item-details">
+                        <li>
+                            <span>
+                                -Waited end mutual missed myself the little sister one. So in pointed or chicken cheered neither spirits invited.
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                -Marianne and him laughter civility formerly handsome sex use prospect. Hence we doors is given rapid scale above am.
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                -Difficult ye mr delivered behaviour by an. If their woman could do wound on. You folly taste hoped their above are and but.
+                            </span>
+                        </li>
+
+                    </ul>
+                </div>
+            </Container>
+        </div>
     );
 }
 
