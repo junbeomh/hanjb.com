@@ -5,9 +5,11 @@ body {
     background-color: #f2eedd;
     background-image: linear-gradient(to bottom, #7de2fc 0%, #a0e7a0 100%);
     min-height: 500vh;
+    /* cursor:url('http://upload.wikimedia.org/wikipedia/commons/d/de/POL_apple.jpg'); */
 }
 
 /* Navbar */
+
 .navbar {
     background-color: none;
 }
@@ -87,9 +89,8 @@ body {
 @media screen and (max-width: 991px) {
     .social-icons {
         margin-left: 1.5rem;
-    }    
+    }
 }
-
 
 .main-container {
     width: 100%;
@@ -203,8 +204,6 @@ body {
     height: 30ch;
 }
 
-/* Resume Items */
-
 .resume-content {
     padding: 4rem;
     /* background: #fff; */
@@ -214,7 +213,7 @@ body {
     display: flex;
     flex-flow: column;
     align-items: center;
-    margin: 0 auto;    
+    margin: 0 auto;
 }
 
 .resume-timeline-container {
@@ -242,7 +241,6 @@ body {
     margin-top: 5rem;
 }
 
-
 .resume-item {
     width: 80%;
     border-radius: 10px;
@@ -260,12 +258,15 @@ body {
 }
 
 @media screen and (max-width: 480px) {
-    .resume-item-wrapper {
-    }
+    .resume-item-wrapper {}
     .resume-item {
         width: 20rem;
         border-radius: 10px;
         padding: 2rem;
+    }
+    .resume-item-header-company {
+        max-width: 10rem;
+        padding-right: 0.rem;
     }
 }
 
@@ -274,7 +275,7 @@ body {
     justify-content: space-between;
 }
 
-.resume-item-header-date{
+.resume-item-header-date {
     display: inline-block;
 }
 
@@ -282,15 +283,15 @@ body {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
 }
+
 .resume-item-sub-header h5 {
     color: rgba(0, 0, 0, 0.808);
 }
 
-.resume-item-details{
+.resume-item-details {
     list-style: disc;
     padding-left: 3%;
 }
-
 
 .resume-item .date {
     display: relative;
@@ -304,20 +305,58 @@ body {
     align-items: center;
 }
 
+.flex-wrapper {
+    max-width: 50rem;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flex-child-wrapper-small {
+    flex: 0 0 20%;
+    border: 2px solid blue;
+    padding: 1rem;
+}
+
+.flex-child-wrapper-big {
+    flex: 1;
+    border: 2px solid black;
+    padding: 1rem;
+}
+
+@media screen and (max-width: 480px) {
+    .flex-container {
+        display: flex;
+        flex-wrap: wrap;
+        flex-flow: column;
+    }
+}
+
+
+@media only screen and (max-width: 280px) {
+    .flex-child-wrapper-big {
+        flex: 1;
+        border: 2px solid green;
+        padding: 1rem;
+    }
+}
+
 .example-enter {
     opacity: 0.01;
-  }
-  
-  .example-enter.example-enter-active {
+}
+
+.example-enter.example-enter-active {
     opacity: 1;
-    transition: opacity 1000ms ease-in;
-  }
-  
-  .example-leave {
+    transition: opacity 300ms ease-in;
+}
+
+.example-leave {
     opacity: 1;
-  }
-  
-  .example-leave.example-leave-active {
+}
+
+.example-leave.example-leave-active {
     opacity: 0.01;
     transition: opacity 300ms ease-in;
-  }
+}
