@@ -1,115 +1,124 @@
-import React, { useState, useContext, useEffect, } from 'react';
-import { Link, animateScroll as scroll } from 'react-scroll';
-import { AppContext } from '../App';
-import Switch from "react-switch";
+import React, { useState, useEffect } from 'react';
+import { animateScroll as scroll } from 'react-scroll';
+import Menu from './Menu'
+import styled, { css } from 'styled-components';
 
-const SCROLL_OFFSET = -150;
+const Transition = styled.div`
+  .active {
+    visibility: visible;
+    transition: all 100ms ease-in-out;
+  }
+  .hidden {
+    visibility: hidden;
+    transition: all 100ms ease-in-out;
+    transform: translate(0, -100%);
+    
+  }
+`;
 
-function CustomNavbar() {
+const NavWrapper = styled.div`
+`;
 
-  const [showButton, setButtonVisibility] = useState(false);
-  const [checked, setChecked] = useState(false);
 
-  const { dispatch } = useContext(AppContext);
+const Nav = styled.header`
 
-  const toggleTheme = () => {
-    dispatch({ type: "toggleTheme" });
-    setChecked(!checked);
+-webkit-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.3), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+-moz-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.3), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.3), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  background-color: none;
+  width: 100%;
+  .navbar-brand-desktop {
+    &:hover,
+    &:focus {
+      transform: translateY(-3px);
+    }
+  }
+  .navbar-brand-mobile {
+    display: none;
+    color: rgba(0, 0, 0, 0.5);
+  }
+  .navbar-brand-desktop, .navbar-brand-mobile {
+    font-family: var(--font-name);
+    font-size: var(--fz-name);
+    font-weight: bold;
+    margin-left: 1em;
+    :hover {}
+  }
+  .navItem {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    font-size: var(--fz-xs);
+    font-weight: bold;
+    font-family: var(--font-main);
+  }
+  @media screen and (max-width: 991px) {
+    .navbar-brand-mobile {
+        display: inline;
+        color: rgba(0, 0, 0, 1);
+    }
+    .navItem {
+        margin-left: 2em;
+        padding: 0.75rem;
+    }
+    .navbar-collapse {
+      border-top: 1px solid rgba(0, 0, 0, 0.3);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+
+    }
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+`;
+
+
+const Navbar = () => {
+  const [show, setShow] = useState(true);
+  const [scrollPos, setScrollPos] = useState(0);
+
+
+  const handleScroll = () => {
+    setScrollPos(document.body.getBoundingClientRect().top);
+    setShow(document.body.getBoundingClientRect().top > scrollPos);
   };
 
   useEffect(() => {
-    const aboutHeight = document.getElementById('main').clientHeight;
-    const showText = () => {
-      if (window.scrollY >= aboutHeight) {
-        setButtonVisibility(true);
-      } else {
-        setButtonVisibility(false);
-      }
-    }
-    // subscribe event
-    window.addEventListener("scroll", showText);
+    window.addEventListener('scroll', handleScroll);
+
     return () => {
-      // unsubscribe event
-      window.removeEventListener("scroll", showText);
+      window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [handleScroll]);
 
   const scrollToTop = () => {
     scroll.scrollToTop();
   };
 
-
   return (
-    <nav className="navbar fixed-top navbar-expand-lg navbar-light" >
-      <div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-        <ul className="navbar-nav mr-auto">
-          <li className="nav-item">
-            <span className="navbar-brand2" href="#" style={showButton ? { color: "rgba(0,0,0,0.7)" } : { color: "#7de2fc" }} onClick={scrollToTop}>JunBeom Han</span>
-          </li>
-        </ul>
-      </div>
-      <span className="navbar-brand" id="navbarName" href="#" style={{ color: "rgba(0,0,0,0.7)" }} onClick={scrollToTop}>JunBeom Han</span>
-      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <i className="fas fa-bars"></i>
-      </button>
-      <div className="collapse navbar-collapse navbarSupportedContent" id="navbarSupportedContent">
-        <ul className="navbar-nav  ml-auto mx-auto">
-          <li><Link activeClass="active" className="navItem" to="about" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.5)" }}> ABOUT </Link></li>
-          <li><Link activeClass="active" className="navItem" to="projects" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.5)" }}> PROJECTS </Link></li>
-          <li><Link activeClass="active" className="navItem" to="experience" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.5)" }}> EXPERIENCE </Link></li>
-          <li><Link activeClass="active" className="navItem" to="education" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.5)" }}> EDUCATION </Link></li>
-          {/* <li><Link activeClass="active" className="navItem" to="skills" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.5)" }}> SKILLS </Link></li> */}
-          {/* <li><Link activeClass="active" className="navItem" to="contact" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} style={{ color: "rgba(0, 0, 0, 0.7)" }}> CONTACT </Link></li> */}
-        </ul>
-      </div>
-      <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 navbarSupportedContent" >
-        <ul className="navbar-nav ml-auto">
-          <li className="social-icons nav-item">
-            <i className="social-icon fas fa-paper-plane"></i>
-            <i className="social-icon fab fa-linkedin"></i>
-            <i className="social-icon fab fa-github"></i>
-            <label className="theme-switch-toggle">
-              <Switch
-                onChange={toggleTheme}
-                checked={checked}
-                className="react-switch"
-                handleDiameter={20}
-                offColor="#131862"
-                onColor="#EF8E38 "
-                offHandleColor="#7de2fc"
-                onHandleColor="#000000"
-                height={26}
-                width={45}
-                uncheckedIcon={
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      height: "100%",
-                      color: "orange",
-                    }}
-                  >  🌙 </div>
-                }
-                checkedIcon={
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      height: "100%",
-                      color: "orange",
-                    }} > ☀️   </div>
-                }
-              />
-            </label>
+    <Transition>
+      <NavWrapper className={show ? "active" : "hidden"}>
+        <Nav className="navbar fixed-top navbar-expand-lg navbar-light" >
+          <div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item">
+                <a> <span className="navbar-brand-desktop" href="#" onClick={scrollToTop}> Jun Beom Han </span> </a>
+              </li>
+            </ul>
+          </div>
 
-          </li>
-        </ul>
-      </div>
-    </nav>
+          <span className="navbar-brand-mobile" href="#" onClick={scrollToTop}>JunBeom Han</span>
 
+          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i className="fas fa-bars"></i>
+          </button>
+
+          <div className="collapse navbar-collapse navbarSupportedContent" id="navbarSupportedContent">
+            <ul className="navbar-nav  ml-auto mx-auto">
+              <Menu />
+            </ul>
+          </div>
+        </Nav>
+      </NavWrapper>
+    </Transition>
   );
 }
 
-export default CustomNavbar;    
+export default Navbar;    

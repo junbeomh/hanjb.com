@@ -1,33 +1,42 @@
 import React from 'react';
+import styled from 'styled-components';
 import ResumeItem from '../Components/ResumeItem';
-import ScrollAnimation from 'react-animate-on-scroll';
-import "animate.css/animate.min.css";
 
-const PAGE_NAME = "EDUCATION"
-class Education extends React.Component {
 
-    render() {
-        return (
-            <section id="education">
-                <div className="resume-content">
-                    <div className='resume-content-container'>
-                        <h1 className="resume-content-title"> {PAGE_NAME} </h1>
-                        <div className="resume-items">
-                            <ScrollAnimation animateIn='animate__fadeInUp'
-                                animateOut='animate__fadeInUp'>
-                                <ResumeItem></ResumeItem>
-                            </ScrollAnimation>
-                            <ScrollAnimation animateIn='animate__fadeInUp'
-                                animateOut='animate__fadeInUp'>
-                                <ResumeItem></ResumeItem>
-                            </ScrollAnimation>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
-        );
+const ContentWrapper = styled.div`
+    padding: 1.5rem;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin: 0 auto;
+    .resume-content-title {
+        margin-top: 3rem;
+        margin-bottom: 5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
+`;
+const PAGE_NAME = "04. EDUCATION."
+
+const Education = () => {
+
+    return (
+        <section id="education">
+            <ContentWrapper>
+                <div className="resume-content-title">
+                    <span className="header-number" style={{ color: "#DBA111", fontSize: "25px", verticalAlign: "bottom", verticalAlign: "top" }}> 04. &nbsp;&nbsp;</span>
+                    <span className="header" style={{ color: "rgba(255, 255, 255, 0.9)", fontSize: "33px", verticalAlign: "top" }}> EDUCATION.</span>
+                </div>
+                <div className="resume-items">
+                    <ResumeItem />
+                    <ResumeItem />
+                </div>
+            </ContentWrapper>
+        </section>
+
+    );
 }
 
 export default Education;
