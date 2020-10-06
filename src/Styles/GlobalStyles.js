@@ -20,12 +20,11 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
     font-size: clamp(40px, 8vw, 80px);
   }
+
   .medium-heading {
     margin: 0;
     font-size: clamp(40px, 8vw, 40px);
   }
-
-
 
   body {
     background: ${props => props.theme.backgroundColor};
@@ -57,7 +56,6 @@ export const GlobalStyles = createGlobalStyle`
     
   }
   
-
   section {
     margin: 0 auto;
     padding: 100px 0;
@@ -74,7 +72,6 @@ export const GlobalStyles = createGlobalStyle`
   justify-content: center;
   align-items: center;
 }
-
 
   a {
     display: inline-block;
@@ -104,7 +101,14 @@ export const GlobalStyles = createGlobalStyle`
     }
   }
 
-  
+  .vertical-timeline-element-title,
+  .vertical-timeline-element-subtitle,
+  .vertical-timeline-element-description
+  {
+    color: black;
+  }
+
+
 `
 
 
