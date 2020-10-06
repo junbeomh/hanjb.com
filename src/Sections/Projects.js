@@ -1,14 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
+import FootyRoom from '../img/footyroom-screenshot3.png';
+import BCITSAVOTES from '../img/bcitsavotes-screenshot1.png';
+import LoveYourPlanet from '../img/loveyourplanet.png';
 
 const ProjectContainer = styled.div`
+padding: 10px;
 
 .cards {
     max-width: 1000px;
     margin: 0 auto;
     display: grid;
     grid-gap: 2rem;
-    padding: 2rem;
+    padding: 1rem;
   
   @media (min-width: 600px) {
      grid-template-columns: repeat(2, 1fr);
@@ -19,7 +23,8 @@ const ProjectContainer = styled.div`
 const CardContainer = styled.div`
     background-color: rgba(255, 255, 255, 0.9);
     color: white;
-    height: 20rem;
+    height: 30rem;
+    width: 100%;
     
     .image-wrapper {
         position: relative;
@@ -30,6 +35,8 @@ const CardContainer = styled.div`
     .image{
         width: 100%;
         height: 100%;
+        border-radius: 5px;
+
     }
 
     .image-description {
@@ -38,7 +45,7 @@ const CardContainer = styled.div`
         bottom: 0;
         left: 0;
         right: 0;
-        background: rgba(0,0,0, 0.5);
+        background: rgba(255,255,255, 0.6);
         color: #fff;
         visibility: hidden;
         opacity: 0;
@@ -48,6 +55,7 @@ const CardContainer = styled.div`
     }
 
     .image-wrapper:hover .image-description {
+        
         visibility: visible;
         opacity: 1;
     }
@@ -58,7 +66,26 @@ const CardContainer = styled.div`
 const PAGE_NAME = "02 PROJECTS."
 
 const Projects = () => {
-    const items = ['JOHN HAN', 'ASDASDASD', 'ASDASDASD', 'ASDASDASD',];
+    const items = [
+        {
+            appCompany: "LoveYourPlanet",
+            appName: "LoveYourPlanet Mobile",
+            appDescrip: "",
+            img: LoveYourPlanet
+        },
+        {
+            appCompany: "Personal Project",
+            appName: "FootyRoom",
+            appDescrip: "",
+            img: FootyRoom
+        },
+        {
+            appCompany: "BCITSA",
+            appName: "BCITSAVotes",
+            appDescrip: "",
+            img: BCITSAVOTES
+        },
+    ];
     return (
         <section id="projects">
             <div className="resume-content-title" style={{marginTop: "4rem", marginBottom: "4rem"}}>
@@ -71,14 +98,17 @@ const Projects = () => {
                         <div key={i}>
                             <CardContainer>
                                 <div class="image-wrapper">
-                                    <img class="image" src="https://picsum.photos/200/300"/>
+                                    <img class="image" src={item.img}/>
                                     <div class="image-description">
-                                        <p>
-                                            {item}
+                                        <p style={{color: "black", fontWeight: "bold"}}>
+                                            {item.appCompany}
                                         </p>
-                                        <h3>
-                                            A simple description.
+                                        <h3 style={{color: "black"}}>
+                                            {item.appName}
                                         </h3>
+                                        <h5 style={{color: "black"}}>
+                                            {item.appDescrip}
+                                        </h5>
                                     </div>
                                 </div>
                             </CardContainer>
