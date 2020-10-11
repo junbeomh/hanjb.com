@@ -5,12 +5,13 @@ import styled, { css } from 'styled-components';
 
 
 const ThemeWrapper = styled.header`
-    margin-left: 0.75rem;
-    margin-right: 0.75rem;
-    vertical-align: bottom;
-  @media (max-width: 991px) {
-    padding: 7px 22px;
-  }
+    margin-top: 0.5rem;
+    @media screen and (max-width: 768px){    
+        margin-top: 0rem;
+      }
+    @media screen and (max-width: 480px){    
+        margin-top: 0rem;
+      }
 `;
 
 const ThemeSwitch = () => {
