@@ -87,12 +87,7 @@ export const GlobalStyles = createGlobalStyle`
     text-decoration-skip-ink: auto;
     color: ${props => props.theme.textColor};
     position: relative;
-    transition: var(--transition);
     cursor: pointer;
-    &:hover,
-    &:focus {
-      color: var(--blue);
-    }
   }
   ul {
     &:after {

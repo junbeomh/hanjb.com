@@ -15,7 +15,7 @@ const StyledSocialList = styled.ul`
     content: '';
     display: block;
     width: 3px;
-    height: 70px;
+    height: 50px;
     margin: 0 auto;
   }
 
@@ -49,11 +49,6 @@ const StyledSocialList = styled.ul`
     &:last-of-type {
     }
     a {
-      &:hover,
-      &:focus {
-        transform: translateY(-3px);
-        color: #EE242C;
-      }
       .social-icons {
         width: 23px;
         height: 23px;
@@ -81,18 +76,15 @@ const SocialBar = ({ isHome }) => {
           </div>
           <a href={'mailto:junbeomh94@gmail.com'}>junboemh94@gmail.com</a>
           <li>
-            <a>
+            <a href="https://github.com/junbeomh">
               <i className="social-icons fab fa-github"></i>
             </a>
-            <a>
+            <a href="https://www.linkedin.com/in/johnjbhan/">
               <i className="social-icons fab fa-linkedin"></i>
             </a>
-            <a>
+            <a href="https://www.instagram.com/hanjbbb/">
               <i className="social-icons fab fa-instagram"></i>
             </a>
-            {/* <a>
-          <i className="social-icons fas fa-paper-plane"></i>
-        </a> */}
           </li>
           <p></p>
         </StyledSocialList>

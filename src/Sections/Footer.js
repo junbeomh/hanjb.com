@@ -74,16 +74,16 @@ const Footer = () => {
       <SocialLinks>
         <ul>
           <li>
-            <a>
+            <a href="https://github.com/junbeomh">
               <i className="social-icons fab fa-github"></i>
             </a>
-            <a>
+            <a href="https://www.linkedin.com/in/johnjbhan/">
               <i className="social-icons fab fa-linkedin"></i>
             </a>
-            <a>
+            <a href="https://www.instagram.com/hanjbbb/">
               <i className="social-icons fab fa-instagram"></i>
             </a>
-            <a>
+            <a href="mailto:junbeomh94@gmail.com">
               <i className="social-icons fas fa-paper-plane"></i>
             </a>
           </li>
