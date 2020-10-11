@@ -44,43 +44,46 @@ const Experience = () => {
         <section id="experience">
             <ContentWrapper>
                 <div className="resume-content-title">
-                    <span className="header-number" style={{ color: "#DBA111", fontSize: "25px", verticalAlign: "bottom", verticalAlign: "top" }}> 03. &nbsp;&nbsp;</span>
+                    <span className="header-number" style={{ color: "#DBA111", fontSize: "25px", verticalAlign: "bottom", verticalAlign: "top" }}> 03. &nbsp;</span>
                     <span className="header" style={{ color: "rgba(255, 255, 255, 0.9)", fontSize: "35px", verticalAlign: "top" }}> EXPERIENCE.</span>
                 </div>
                 <TimeLineContainer >
                     <div className="resume-item-timeline">
                         <VerticalTimeline>
                             <VerticalTimelineElement
-                                contentStyle={{ background: 'rgba(255,255,255,0.8)', border: "1px solid black" }}
-                                iconStyle={{ background: 'none' }}
+                                contentStyle={{ background: 'rgba(255,255,255,0.8)'}}
                                 position="left"
                                 className="vertical-timeline-element--work"
-                                date="2011 - present"
+                                date="May 2019 - Dec 2019"
+                                dateClassName="vertical-timeline-element-date"
+                                iconClassName="vertical-timeline-element-icon"
                             >
-                                <h3 className="vertical-timeline-element-title ">Creative Director</h3>
-                                <h4 className="vertical-timeline-element-subtitle">Miami, FL</h4>
-                                <p className="vertical-timeline-element-description">  Creative Direction, User Experience, Visual Design, Project Management, Team Leading  </p>
+                                <h3 className="vertical-timeline-element-title ">Software Dev. Co-op</h3>
+                                <h4 className="vertical-timeline-element-subtitle">Piccolo Software Inc.</h4>
+                                <p className="vertical-timeline-element-description">  Android, Node.js, VB.Net, Microsoft Web-services </p>
                             </VerticalTimelineElement>
                             <VerticalTimelineElement
                                 contentStyle={{ background: 'rgba(255,255,255,0.8)' }}
                                 className="vertical-timeline-element--work"
-                                date="2010 - 2011"
-                                iconStyle={{ background: 'none' }}
-                            >
-                                <h3 className="vertical-timeline-element-title">Art Director</h3>
-                                <h4 className="vertical-timeline-element-subtitle">San Francisco, CA</h4>
-                                <p className="vertical-timeline-element-description"> Creative Direction, User Experience, Visual Design, SEO, Online Marketing  </p>
+                                date="Jan 2016 - Jan 2017"
+                                dateClassName="vertical-timeline-element-date"
+                                iconClassName="vertical-timeline-element-icon"
+                        >
+                                <h3 className="vertical-timeline-element-title">Floor Manager</h3>
+                                <h4 className="vertical-timeline-element-subtitle">Word of New Life Books</h4>
+                                <p className="vertical-timeline-element-description"> Customer support and relations, inventory management  </p>
                             </VerticalTimelineElement>
                             <VerticalTimelineElement
                                 contentStyle={{ background: 'rgba(255,255,255,0.8)' }}
                                 position="left"
                                 className="vertical-timeline-element--work"
-                                date="2008 - 2010"
-                                iconStyle={{ background: 'none' }}
+                                date="May 2014 - May 2015"
+                                dateClassName="vertical-timeline-element-date"
+                                iconClassName="vertical-timeline-element-icon"
                             >
-                                <h3 className="vertical-timeline-element-title">Web Designer</h3>
-                                <h4 className="vertical-timeline-element-subtitle">Los Angeles, CA</h4>
-                                <p className="vertical-timeline-element-description">  User Experience, Visual Design   </p>
+                                <h3 className="vertical-timeline-element-title">Sales Associate</h3>
+                                <h4 className="vertical-timeline-element-subtitle">JCrew</h4>
+                                <p className="vertical-timeline-element-description"> Customer service  </p>
                             </VerticalTimelineElement>
                         </VerticalTimeline>
                     </div>

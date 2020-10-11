@@ -14,6 +14,7 @@ export const GlobalStyles = createGlobalStyle`
     --fz-name: 28px;
     --font-main: 'ROBOTO';
     --font-name: 'Sacramento';
+    --color-emphasis: rgba(255, 255, 255, 0.6);
   }
 
   .big-heading {
@@ -25,6 +26,11 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
     font-size: clamp(40px, 8vw, 40px);
   }
+
+  .text-emphasis {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
 
   body {
     background: ${props => props.theme.backgroundColor};
@@ -53,7 +59,6 @@ export const GlobalStyles = createGlobalStyle`
     font-weight: 600;
     color: ${props => props.theme.textColor}
     line-height: 1;
-    
   }
   
   section {
@@ -67,11 +72,14 @@ export const GlobalStyles = createGlobalStyle`
     }
 }
 
-.resume-content-title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  .resume-content-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
 
   a {
     display: inline-block;
@@ -97,18 +105,29 @@ export const GlobalStyles = createGlobalStyle`
     border: ${props => props.theme.buttonBorder};
     :hover {
       background: ${props => props.theme.buttonHover};
-      font-weight: bold;
     }
   }
 
   .vertical-timeline-element-title,
   .vertical-timeline-element-subtitle,
-  .vertical-timeline-element-description
+  .vertical-timeline-element-description {
+    color: black;
+
+  }
+  .vertical-timeline-element-date
   {
+    color: white;
+    @media screen and (max-width: 1170px){    
+      color: black;
+    }
+  @media screen and (max-width: 480px){    
     color: black;
   }
+  }
 
-
+  .vertical-timeline-element-icon {
+    background: ${props => props.theme.navColor};
+  }
 `
 
 
