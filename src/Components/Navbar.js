@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { animateScroll as scroll } from 'react-scroll';
-import Menu from './Menu'
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { Link } from 'react-scroll';
 import ThemeSwitch from '../Components/ThemeSwitch';
 
@@ -12,39 +11,49 @@ const StyledNavWrapper = styled.div`
   -webkit-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.3), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   -moz-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.3), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.3), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  @media screen and (max-width: 768px){
-    // overflow-x: auto;
-  }
-
 `;
 
 
 const StyledNav = styled.nav`
   display: flex;
   z-index:99;
-
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   overflow: hidden;
   position: fixed;
   min-height: 5vh;
+  max-height: 5vh;
   width: 100%;
-  background-color: black;
+  background-color: ${props => props.theme.navColor};
+  transition: all 0.3s ease-in;
 
   .logo {
     text-transform: uppsercase;
     letter-spacing: 5px;
     cursor: pointer;
+    margin-top: 0.25rem;
+    margin-left: 4rem;
+    color: white;
   }
 
   .nav-links {
     display: flex;
-    justify-content: space-evenly;
-    width: 40%;
+    justify-content: flex-end;
+    align-items: center;
+    width: 60%;
+    // background: grey;
+    margin-top: 0.75rem;
   }
 
   .nav-links li{
     list-style: none;
+    margin-right: 2rem;
+    color:white
+  }
+
+  .themeSwitch {
+    display: flex;
+    align-items: center;
   }
 
   .nav-links Link{
@@ -56,6 +65,7 @@ const StyledNav = styled.nav`
   .burger{
     display: none;
     cursor: pointer;
+    margin-right: 2rem;
   }
 
   .burger div {
@@ -69,16 +79,62 @@ const StyledNav = styled.nav`
   @media screen and (max-width: 768px){    
     .nav-links {
       position: fixed;
+      justify-content: space-around;
       right: 0px;
       height: 95vh;
       top: 5vh;
-      background-color: black;
+      background-color: ${props => props.theme.navColor};
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 50%;
+      width: 60%;
       transform: translateX(100%);
-      // transition: transform 0.5s ease-in;
+      margin-top:0rem;
+    }
+
+    .nav-links li{
+      list-style: none;
+      margin-right: 0rem;
+    }
+
+    .logo {
+      margin-top: 0.25rem;
+      margin-left: 2rem;
+    }
+
+    .nav-links li {
+      opacity: 1;
+    }
+
+    .burger {
+      display: block;
+    }
+  }
+
+  @media screen and (max-width: 480px){    
+    .nav-links {
+      position: fixed;
+      justify-content: space-around;
+      right: 0px;
+      height: 95vh;
+      top: 5vh;
+      background-color: ${props => props.theme.navColor};
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 60%;
+      transform: translateX(100%);
+      margin-top:0rem;
+    }
+
+    .nav-links li{
+      list-style: none;
+      margin-right: 2rem;
+    }
+
+    .logo {
+      margin-top: 0.25rem;
+      margin-top: 0.75rem;
     }
 
     .nav-links li {
@@ -107,27 +163,18 @@ const StyledNav = styled.nav`
     transform: rotate(45deg) translate(-5px, -6px);
   }
 
-  // @keyframes navLinkFade{
-  //   from {
-  //     opacity: 0;
-  //     transform: translateX(50px);
-  //   }
-
-  //   to {
-  //     opacity: 1;
-  //     transform: translateX(0px);
-  //   }
-  // }
+  .transition {
+    transition: all 0.3s ease-in;
+  }
   .
 `;
-
 
 
 
 const Navbar = () => {
   const [show, setShow] = useState(true);
   const [scrollPos, setScrollPos] = useState(0);
-  const SCROLL_OFFSET = 0
+  const SCROLL_OFFSET = -150;
 
   const handleScroll = () => {
     setScrollPos(document.body.getBoundingClientRect().top);
@@ -141,7 +188,7 @@ const Navbar = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [handleScroll]);
+  }, []);
 
   const scrollToTop = () => {
     scroll.scrollToTop();
@@ -156,21 +203,32 @@ const Navbar = () => {
 
       // Toggle Nav
       nav.classList.toggle('nav-active');
+      nav.classList.add('transition');    //add transition class
 
       // Burger Animation
       burger.classList.toggle('toggle');
     })
 
+    // remove transition class
+    window.addEventListener(
+      'resize',
+      () => {
+        if (window.innerWidth > 1035) {
+          nav.classList.remove('transition');
+        }
+      },
+      false
+    );
 
     //Animate Links
-    // Object.keys(navLinks).forEach((link, index)=>{
+    // navLinks.forEach((link, index) => {
     //   link.style.animation = `navLinksFade 0.5s ease forwards ${index / 7}s`
     // })
   }
 
   return (
     <StyledNavWrapper>
-      <StyledNav>
+      <StyledNav className="styled-nav">
         <div className="logo" onClick={scrollToTop}>
           <h4> JBH </h4>
         </div>
@@ -197,9 +255,9 @@ const Navbar = () => {
              </Link>
           </li>
           <li>
-            <a href="#">
+            <div className="themeSwitch">
               <ThemeSwitch />
-            </a>
+            </div>
           </li>
         </ul>
         <div className="burger">
