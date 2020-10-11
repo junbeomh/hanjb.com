@@ -2,78 +2,132 @@ import React, { useState, useEffect } from 'react';
 import { animateScroll as scroll } from 'react-scroll';
 import Menu from './Menu'
 import styled, { css } from 'styled-components';
+import { Link } from 'react-scroll';
+import ThemeSwitch from '../Components/ThemeSwitch';
 
-const Transition = styled.div`
-  .active {
-    visibility: visible;
-    transition: all 100ms ease-in-out;
+const StyledNavWrapper = styled.div`
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  -webkit-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.3), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.3), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.3), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  @media screen and (max-width: 768px){
+    // overflow-x: auto;
   }
-  .hidden {
-    visibility: hidden;
-    transition: all 100ms ease-in-out;
-    transform: translate(0, -100%);
-    
-  }
+
 `;
 
-const NavWrapper = styled.div`
-`;
 
+const StyledNav = styled.nav`
+  display: flex;
+  z-index:99;
 
-const Nav = styled.header`
-
--webkit-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.3), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
--moz-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.3), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.3), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  background-color: none;
+  align-items: center;
+  justify-content: space-around;
+  overflow: hidden;
+  position: fixed;
+  min-height: 5vh;
   width: 100%;
-  .navbar-brand-desktop {
-    &:hover,
-    &:focus {
-      transform: translateY(-3px);
-    }
-  }
-  .navbar-brand-mobile {
-    display: none;
-    color: rgba(0, 0, 0, 0.5);
-  }
-  .navbar-brand-desktop, .navbar-brand-mobile {
-    font-family: var(--font-name);
-    font-size: var(--fz-name);
-    font-weight: bold;
-    margin-left: 1em;
-    :hover {}
-  }
-  .navItem {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-    font-size: var(--fz-xs);
-    font-weight: bold;
-    font-family: var(--font-main);
-  }
-  @media screen and (max-width: 991px) {
-    .navbar-brand-mobile {
-        display: inline;
-        color: rgba(0, 0, 0, 1);
-    }
-    .navItem {
-        margin-left: 2em;
-        padding: 0.75rem;
-    }
-    .navbar-collapse {
-      border-top: 1px solid rgba(0, 0, 0, 0.3);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  background-color: black;
 
-    }
-    background-color: rgba(255, 255, 255, 0.7);
+  .logo {
+    text-transform: uppsercase;
+    letter-spacing: 5px;
+    cursor: pointer;
   }
+
+  .nav-links {
+    display: flex;
+    justify-content: space-evenly;
+    width: 40%;
+  }
+
+  .nav-links li{
+    list-style: none;
+  }
+
+  .nav-links Link{
+    color: white;
+    text-decoration: none;
+    letter-spacing: 3px;
+  }
+
+  .burger{
+    display: none;
+    cursor: pointer;
+  }
+
+  .burger div {
+    width: 25px;
+    height: 3px;
+    background-color: rgb(226, 226, 266);
+    margin: 5px;
+    transition: all 0.3s ease;
+  }
+
+  @media screen and (max-width: 768px){    
+    .nav-links {
+      position: fixed;
+      right: 0px;
+      height: 95vh;
+      top: 5vh;
+      background-color: black;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 50%;
+      transform: translateX(100%);
+      // transition: transform 0.5s ease-in;
+    }
+
+    .nav-links li {
+      opacity: 1;
+    }
+
+    .burger {
+      display: block;
+    }
+  }
+
+  .nav-active {
+    transform: translateX(0%);
+  }
+
+  .toggle .line1{
+    transform: rotate(-45deg) translate(-5px, 6px);
+
+  }
+
+  .toggle .line2{
+    opacity:0;
+  }
+
+  .toggle .line3{
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+
+  // @keyframes navLinkFade{
+  //   from {
+  //     opacity: 0;
+  //     transform: translateX(50px);
+  //   }
+
+  //   to {
+  //     opacity: 1;
+  //     transform: translateX(0px);
+  //   }
+  // }
+  .
 `;
+
+
 
 
 const Navbar = () => {
   const [show, setShow] = useState(true);
   const [scrollPos, setScrollPos] = useState(0);
-
+  const SCROLL_OFFSET = 0
 
   const handleScroll = () => {
     setScrollPos(document.body.getBoundingClientRect().top);
@@ -81,6 +135,7 @@ const Navbar = () => {
   };
 
   useEffect(() => {
+    navSlide();
     window.addEventListener('scroll', handleScroll);
 
     return () => {
@@ -92,32 +147,68 @@ const Navbar = () => {
     scroll.scrollToTop();
   };
 
+  const navSlide = () => {
+    const burger = document.querySelector('.burger');
+    const nav = document.querySelector('.nav-links');
+    const navLinks = document.querySelector('.nav-links li');
+
+    burger.addEventListener('click', () => {
+
+      // Toggle Nav
+      nav.classList.toggle('nav-active');
+
+      // Burger Animation
+      burger.classList.toggle('toggle');
+    })
+
+
+    //Animate Links
+    // Object.keys(navLinks).forEach((link, index)=>{
+    //   link.style.animation = `navLinksFade 0.5s ease forwards ${index / 7}s`
+    // })
+  }
+
   return (
-    <Transition>
-      <NavWrapper className={show ? "active" : "hidden"}>
-        <Nav className="navbar fixed-top navbar-expand-lg navbar-light" >
-          <div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-            <ul className="navbar-nav mr-auto">
-              <li className="nav-item">
-                <a> <span className="navbar-brand-desktop" href="#" onClick={scrollToTop}> Jun Beom Han </span> </a>
-              </li>
-            </ul>
-          </div>
+    <StyledNavWrapper>
+      <StyledNav>
+        <div className="logo" onClick={scrollToTop}>
+          <h4> JBH </h4>
+        </div>
 
-          <span className="navbar-brand-mobile" href="#" onClick={scrollToTop}>JunBeom Han</span>
-
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <i className="fas fa-bars"></i>
-          </button>
-
-          <div className="collapse navbar-collapse navbarSupportedContent" id="navbarSupportedContent">
-            <ul className="navbar-nav  ml-auto mx-auto">
-              <Menu />
-            </ul>
-          </div>
-        </Nav>
-      </NavWrapper>
-    </Transition>
+        <ul className="nav-links">
+          <li>
+            <Link activeClass="navbar-active" className="navItem" to="about" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} >
+              ABOUT
+                </Link>
+          </li>
+          <li>
+            <Link activeClass="navbar-active" className="navItem" to="projects" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500}
+            > PROJECTS
+            </Link>
+          </li>
+          <li>
+            <Link activeClass="navbar-active" className="navItem" to="experience" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} >
+              EXPERIENCE
+               </Link>
+          </li>
+          <li>
+            <Link activeClass="navbar-active" className="navItem" to="education" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500}>
+              EDUCATION
+             </Link>
+          </li>
+          <li>
+            <a href="#">
+              <ThemeSwitch />
+            </a>
+          </li>
+        </ul>
+        <div className="burger">
+          <div className="line1">  </div>
+          <div className="line2">  </div>
+          <div className="line3">  </div>
+        </div>
+      </StyledNav>
+    </StyledNavWrapper>
   );
 }
 
