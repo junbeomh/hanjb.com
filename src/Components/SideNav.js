@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
-import "../App.css"
 // import { loaderDelay } from '@utils';
 
 const StyledSideElement = styled.div`

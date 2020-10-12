@@ -8,7 +8,6 @@ import Education from './Sections/Education';
 import CustomNavbar from "./Components/Navbar";
 
 import Contact from './Sections/Contact';
-import './App.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
 import Footer from './Sections/Footer';
 

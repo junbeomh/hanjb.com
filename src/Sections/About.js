@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import profileImage from '../img/profile.jpg';
 import { Container, Row, Col } from 'react-bootstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import '../App.css';
 const PAGE_NAME = "01. ABOUT."
 
 const ContentWrapper = styled.div`
@@ -13,8 +12,8 @@ const ContentWrapper = styled.div`
     align-items: center;
     margin: 0 auto;
     .resume-content-title {
-        margin-top: 3rem;
-        margin-bottom: 5rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
     }
 `;
 
@@ -53,17 +52,16 @@ const ImageWrapper = styled.div`
         display: flex;
         justify-content: center;
         margin: 30px auto 0;
-
-        background-color: #034694;
+        background-color:rgba(0,0,0, 0.5);
         
     #profile-pic {
         width: 100%;
         height: auto;
         border-radius: 3px;
       }
-      @media (max-width: 768px) {
+      @media (min-width: 768px) {
         margin: 30px auto 0;
-        width: 85%;
+        width: 100%;
       }
       @media (max-width: 480px) {
         margin: 30px auto 0;
@@ -135,13 +133,14 @@ const About = () => {
     useEffect(() => {
         const timeout = setTimeout(() => setIsMounted(true), 1000);
         return () => clearTimeout(timeout);
-    }, []); const skills = ['JavaScript (ES6+)', 'HTML & (S)CSS', 'React', 'Vue', 'Node.js', 'WordPress', 'Node.js', 'WordPress'];
+    }, []);
+    const skills = ['AWS', 'React', 'Node & Express JS', 'Python', 'MongoDB', 'Docker',];
     return (
         <section id="about">
             <ContentWrapper>
                 <div className="resume-content-title" style={{}}>
-                    <p className="header-number" style={{ color: "#DBA111", fontSize: "25px", verticalAlign: "top"}}> 01. &nbsp;&nbsp;</p>
-                    <p className="header" style={{ color: "rgba(255, 255, 255, 0.9)", fontSize: "33px", lineHeight: "10px", position: "relative", }}> ABOUT.</p>
+                    <p className="header-number" style={{ color: "#DBA111", fontSize: "25px", verticalAlign: "top" }}> 01. &nbsp;</p>
+                    <p className="header" style={{ color: "rgba(255, 255, 255, 0.9)", fontSize: "33px", lineHeight: "10px", position: "relative", }}> ABOUT ME.</p>
                 </div>
                 <AboutContainer>
                     <Row>
@@ -149,15 +148,14 @@ const About = () => {
                             <StyledText>
                                 <p>Hey! I'm JunBeom, a junior software engineer based in Vancouver, Canada. </p>
                                 <p>
-                                    Mind what no by kept. Celebrated no he decisively thoroughly.
-                                    Our asked sex point her she seems. New plenty she horses parish design you.
-                                    Mind what no by kept. Celebrated no he decisively thoroughly.
-                                    </p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                </p>
 
                                 <p>
-                                    Mind what no by kept. Celebrated no he decisively thoroughly.
-                                    Our asked sex point her she seems. New plenty she horses parish design you.
-                                    </p>
+                                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                                </p>
 
                                 <p>Here are a few technologies I've been working with recently:</p>
 
