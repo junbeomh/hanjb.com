@@ -5,10 +5,10 @@ import BCITSAVOTES from '../img/bcitsavotes-screenshot1.png';
 import LoveYourPlanet from '../img/loveyourplanet.png';
 
 const ProjectContainer = styled.div`
-padding: 10px;
+padding: 20px;
 
 .cards {
-    max-width: 1000px;
+    max-width: 875px;
     margin: 0 auto;
     display: grid;
     grid-gap: 2rem;
@@ -23,8 +23,17 @@ padding: 10px;
 const CardContainer = styled.div`
     background-color: rgba(255, 255, 255, 0.9);
     color: white;
-    height: 30rem;
-    width: 100%;
+    height: 23rem;
+        width: 100%;
+
+    @media (max-width: 768px) {
+        height: 23rem;
+
+      }
+      @media (max-width: 480px) {
+        height: 19rem;
+
+      }
     
     .image-wrapper {
         position: relative;
@@ -52,6 +61,7 @@ const CardContainer = styled.div`
         transition: opacity .2s, visibility .2s;
         padding: 35px;
         line-height: 5px;
+        border-radius: 5px;
     }
 
     .image-wrapper:hover .image-description {
@@ -67,12 +77,12 @@ const PAGE_NAME = "02 PROJECTS."
 
 const Projects = () => {
     const items = [
-        {
-            appCompany: "LoveYourPlanet",
-            appName: "LoveYourPlanet Mobile",
-            appDescrip: "",
-            img: LoveYourPlanet
-        },
+        // {
+        //     appCompany: "LoveYourPlanet",
+        //     appName: "LoveYourPlanet Mobile",
+        //     appDescrip: "",
+        //     img: LoveYourPlanet
+        // },
         {
             appCompany: "Personal Project",
             appName: "FootyRoom",
@@ -89,7 +99,7 @@ const Projects = () => {
     return (
         <section id="projects">
             <div className="resume-content-title" style={{marginTop: "4rem", marginBottom: "4rem"}}>
-                <span className="header-number" style={{ color: "#DBA111", fontSize: "25px", verticalAlign: "bottom", verticalAlign: "top" }}> 02. &nbsp;&nbsp;</span>
+                <span className="header-number" style={{ color: "#DBA111", fontSize: "25px", verticalAlign: "bottom", verticalAlign: "top" }}> 02.&nbsp;</span>
                 <span className="header" style={{ color: "rgba(255, 255, 255, 0.9)", fontSize: "33px", verticalAlign: "top" }}> PROJECTS.</span>
             </div>
             <ProjectContainer className="cards">
@@ -97,9 +107,9 @@ const Projects = () => {
                     {items.map((item, i) => (
                         <div key={i}>
                             <CardContainer>
-                                <div class="image-wrapper">
-                                    <img class="image" src={item.img}/>
-                                    <div class="image-description">
+                                <div className="image-wrapper">
+                                    <img className="image" src={item.img}/>
+                                    <div className="image-description">
                                         <p style={{color: "black", fontWeight: "bold"}}>
                                             {item.appCompany}
                                         </p>

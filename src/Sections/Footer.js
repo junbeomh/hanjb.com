@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-// import { Icon } from '@components/icons';
-// import { socialMedia } from '@config';
 
 const FooterWrapper = styled.footer`
   flex-direction: column;
@@ -39,10 +37,6 @@ const SocialLinks = styled.div`
     list-style: none;
     a {
       padding: 0px;
-        &:hover,
-        &:focus {
-          transform: translateY(-3px);
-        }
       .social-icons {
         margin-left:10px;
         width: 25px;
@@ -58,15 +52,6 @@ const SocialLinks = styled.div`
   }
 `;
 
-const Credits = styled.div`
-  color: var(--light-slate);
-  font-family: var(--font-mono);
-  font-size: var(--fz-xxs);
-  line-height: 1;
-  a {
-    padding: 5px;
-  }
-`;
 
 const Footer = () => {
   return (

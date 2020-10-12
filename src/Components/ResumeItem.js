@@ -14,17 +14,17 @@ const ResumeItemDiv = styled.div`
             width: 20rem;
             padding: 1rem;
     }
-    
-    @media screen and (max-width: 768px){
-        .resume-item-header-date {
-            size: 10px;
-        }
-    }
-    @media screen and (max-width: 480px){
-        .resume-item-header-date {
-            size: 10px;
-        }
-    }
+
+    // @media screen and (max-width: 768px){
+    //     .resume-item-header-date {
+    //         size: 10px;
+    //     }
+    // }
+    // @media screen and (max-width: 480px){
+    //     .resume-item-header-date {
+    //         size: 10px;
+    //     }
+    // }
 `;
 
 
