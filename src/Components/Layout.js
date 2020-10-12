@@ -1,33 +1,81 @@
-import React, { useReducer, createContext } from 'react';
+import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { initialState, reducer } from "../Styles/Reducer";
 import { GlobalStyles } from '../Styles/GlobalStyles';
-import Gradients from './Gradients';
+import { light, dark } from '../Styles/Theme';
+import { useDarkMode } from '../Hooks/useDarkMode';
+import styled from 'styled-components';
 import CustomNavbar from "./Navbar";
 import SocialBar from './SocialBar';
-import Footer from '../Sections/Footer';
-import '../App.css'
 import '../../node_modules/font-awesome/css/font-awesome.min.css';
 
-export const AppContext = createContext();
+import Switch from "react-switch";
 
-const Layout = ({children}) => {
-    const [state, dispatch] = useReducer(reducer, initialState);
-    const { currentTheme } = state;
+const ThemeWrapper = styled.header`
+    margin-top: 0.5rem;
+    @media screen and (max-width: 768px){    
+        margin-top: 0rem;
+      }
+    @media screen and (max-width: 480px){    
+        margin-top: 0rem;
+      }
+`;
+
+const Layout = ({ children }) => {
+    const [theme, toggleTheme, componentMounted, checked] = useDarkMode();
+    const themeMode = theme === 'light' ? light : dark;
+
+    if (!componentMounted) {
+        return <div />
+    };
 
     return (
-        <div className="App">
-            <ThemeProvider theme={currentTheme}>
-                <AppContext.Provider value={{ ...state, dispatch }}>
-                    <GlobalStyles />
-                    <Gradients/>
-                    <CustomNavbar/>
-                    <SocialBar/>
-                    <div id="content">
-                        {children}
-                        <Footer></Footer>
-                    </div>
-                </AppContext.Provider>
+        <div>
+            <ThemeProvider theme={themeMode}>
+                <CustomNavbar>
+                    <ThemeWrapper>
+                        <label>
+                            <Switch
+                                onChange={toggleTheme}
+                                checked={checked}
+                                handleDiameter={20}
+                                offColor="#fff"
+                                onColor="#fff"
+                                offHandleColor="#023876"
+                                onHandleColor="#121212"
+                                height={28}
+                                width={47}
+                                checkedIcon={
+                                    <div
+                                        style={{
+                                            display: "flex",
+                                            justifyContent: "center",
+                                            alignItems: "center",
+                                            height: "100%",
+                                            color: "#DBA111",
+                                        }}
+                                    >
+                                        <i className="fas fa-moon"></i>  </div>
+                                }
+                                uncheckedIcon={
+                                    <div style={{
+                                        display: "flex",
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                        height: "100%",
+                                        color: "#DBA111",
+                                    }}
+                                    >
+                                        <i className="fas fa-sun"></i>   </div>
+                                }
+                            />
+                        </label>
+                    </ThemeWrapper>
+                </CustomNavbar>
+                <GlobalStyles />
+                <SocialBar />
+                <div id="content">
+                    {children}
+                </div>
             </ThemeProvider>
         </div>
     );
