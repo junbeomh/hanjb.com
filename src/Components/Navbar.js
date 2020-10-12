@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { animateScroll as scroll } from 'react-scroll';
 import styled from 'styled-components';
 import { Link } from 'react-scroll';
-import ThemeSwitch from '../Components/ThemeSwitch';
 
 const StyledNavWrapper = styled.div`
   margin: 0px;
@@ -41,7 +40,6 @@ const StyledNav = styled.nav`
     justify-content: flex-end;
     align-items: center;
     width: 60%;
-    // background: grey;
     margin-top: 0.75rem;
   }
 
@@ -171,7 +169,7 @@ const StyledNav = styled.nav`
 
 
 
-const Navbar = () => {
+const Navbar = ({children}) => {
   const [show, setShow] = useState(true);
   const [scrollPos, setScrollPos] = useState(0);
   const SCROLL_OFFSET = -150;
@@ -219,11 +217,6 @@ const Navbar = () => {
       },
       false
     );
-
-    //Animate Links
-    // navLinks.forEach((link, index) => {
-    //   link.style.animation = `navLinksFade 0.5s ease forwards ${index / 7}s`
-    // })
   }
 
   return (
@@ -255,9 +248,7 @@ const Navbar = () => {
              </Link>
           </li>
           <li>
-            <div className="themeSwitch">
-              <ThemeSwitch />
-            </div>
+              {children}    
           </li>
         </ul>
         <div className="burger">
