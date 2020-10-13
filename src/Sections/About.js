@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import profileImage from '../img/profile.jpg';
-import { Container, Row, Col } from 'react-bootstrap';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { Row, Col } from 'react-bootstrap';
 const PAGE_NAME = "01. ABOUT."
 
 const ContentWrapper = styled.div`
@@ -49,59 +48,29 @@ const StyledText = styled.div`
 
 
 const ImageWrapper = styled.div`
-        display: flex;
-        justify-content: center;
-        margin: 30px auto 0;
-        background-color:rgba(0,0,0, 0.5);
+    display: flex;
+    justify-content: center;
+    margin: 30px auto 0;
+    // background-color:rgba(0,0,0, 0.5);
         
     #profile-pic {
         width: 100%;
         height: auto;
         border-radius: 3px;
-      }
-      @media (min-width: 768px) {
-        margin: 30px auto 0;
-        width: 100%;
-      }
-      @media (max-width: 480px) {
-        margin: 30px auto 0;
-        width: 70%;
-      }
-
-      
-      #profile-pic:hover {
-        opacity: 0.6;
-      }
-      .overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: auto;
-
-  opacity: 0;
-  transition: .5s ease;
-  background-color: rgba(219,161,17, 0.5);
-  
-}
-
-:hover .overlay {
-  opacity: 1;
-}
-
-.text {
-    color: white;
-    font-size: 20px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    text-align: center;
-  }
-
+        
+        @media screen and (max-width: 600px){    
+            width: 70%;
+            height: 60%;
+        }
+        @media screen and (max-width: 480px){    
+            width: 70%;
+            height: 60%;
+        }
+        &:hover,
+        &:focus{
+            opacity: 0.6;
+        }
+    }
   }
 `;
 const ButtonWrapper = styled.div`
@@ -116,7 +85,14 @@ const ButtonWrapper = styled.div`
         border-radius: 5px;
         font-size: var(--fz-xl);
         background: transparent;
-
+    }
+    a {
+        letter-spacing: 0.1em;
+        text-decoration: none;
+        &:hover,
+        &:focus {
+          color: var(--color-yellow);
+        }
     }
     @media (min-width: 768px) {
         margin: 40px auto 0;
@@ -134,7 +110,7 @@ const About = () => {
         const timeout = setTimeout(() => setIsMounted(true), 1000);
         return () => clearTimeout(timeout);
     }, []);
-    const skills = ['AWS', 'React', 'Node & Express JS', 'Python', 'MongoDB', 'Docker',];
+    const skills = ['AWS', 'React', 'Python', 'Node & Express JS', 'MongoDB', 'Docker',];
     return (
         <section id="about">
             <ContentWrapper>
@@ -148,13 +124,13 @@ const About = () => {
                             <StyledText>
                                 <p>Hey! I'm JunBeom, a junior software engineer based in Vancouver, Canada. </p>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    Shortly after graduating from UBC, I have decided to make a career switch to Computer Science - and I have loving it since!
                                 </p>
 
                                 <p>
-                                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                                    I am devoted to continuous learning, as there are always new perspectives unseen. Also, 
+                                    I love having structure and keeping things in order, with a mindset of continuosuly improving and optimizing them. 
+                                    Lastly, I enjoy and value team work because accomplishing collective goals as a group is always thrilling.
                                 </p>
 
                                 <p>Here are a few technologies I've been working with recently:</p>
@@ -174,10 +150,9 @@ const About = () => {
                                     ></img>
                                 </ImageWrapper>
                                 <ButtonWrapper>
-                                    <button> RESUME </button>
+                                    <button><a href="/resume.pdf" className="resume-button"> RESUME </a> </button>
                                 </ButtonWrapper>
                             </>
-
                         </Col>
                     </Row>
                 </AboutContainer>
