@@ -21,7 +21,6 @@ const StyledNav = styled.nav`
   overflow: hidden;
   position: fixed;
   min-height: 5vh;
-  max-height: 5vh;
   width: 100%;
   background-color: ${props => props.theme.navColor};
   transition: all 0.3s ease-in;
