@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import React from 'react';
 import styled from 'styled-components';
 
 const StyledMainSection = styled.section`
@@ -40,16 +39,17 @@ const StyledMainSection = styled.section`
     max-width: 500px;
   }
   .email-link {
+    letter-spacing: 0.1em;
     &:hover,
     &:focus {
       transform: translateY(-3px);
-      color: black;
+      color: var(--color-yellow);
     }
     }
 `;
 
 
-const App = () => {
+const Main = () => {
   const greet = <h1>Hi, my name is</h1>;
   const name = <h2 className="big-heading text-emphasis">JunBeom Han.</h2>;
   const position = <h3 className="big-heading"> Junior Software Developer. </h3>;
@@ -79,4 +79,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Main;
