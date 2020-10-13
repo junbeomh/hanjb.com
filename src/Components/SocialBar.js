@@ -24,22 +24,22 @@ const StyledSocialList = styled.ul`
     &:hover,
     &:focus {
       transform: translateY(-3px);
-      color: #DBA111;
+      color: var(--color-yellow);
       ;
     }
   }
  
   a {
-    
     font-family: var(--font-mono);
     font-size: var(--fz-xs);
+    text-decoration: none;
     letter-spacing: 0.3em;
     writing-mode: vertical-rl;
     margin-top: 0.75rem;
     &:hover,
     &:focus {
       transform: translateY(-3px);
-      color: #DBA111;
+      color: var(--color-yellow);
       ;
     }
     
@@ -55,7 +55,7 @@ const StyledSocialList = styled.ul`
         &:hover,
         &:focus {
           transform: translateY(-3px);
-          color: #DBA111;
+          color: var(--color-yellow);
           ;
         }
       }

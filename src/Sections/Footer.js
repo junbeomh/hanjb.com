@@ -9,12 +9,17 @@ const FooterWrapper = styled.footer`
   padding: 15px;
   text-align: center;
   margin-top: 150px;
+  h6{
+    letter-spacing: 0.1em;
+  }
   #email {
     display: none;
+    text-decoration: none;
+    letter-spacing: 0.1em;
     &:hover,
     &:focus {
       transform: translateY(-3px);
-      color: #DBA111;
+      color: var(--color-yellow);
       ;
     }
     @media (max-width: 991px) {
@@ -29,7 +34,6 @@ const SocialLinks = styled.div`
     display: block;
     width: 100%;
     margin: 0 auto 10px;
-    color: ;
   }
   ul {
     padding: 0;
@@ -44,7 +48,7 @@ const SocialLinks = styled.div`
         &:hover,
         &:focus {
           transform: translateY(-3px);
-          color: #DBA111;
+          color: var(--color-yellow);
           ;
         }
       }
@@ -67,9 +71,6 @@ const Footer = () => {
             </a>
             <a href="https://www.instagram.com/hanjbbb/">
               <i className="social-icons fab fa-instagram"></i>
-            </a>
-            <a href="mailto:junbeomh94@gmail.com">
-              <i className="social-icons fas fa-paper-plane"></i>
             </a>
           </li>
         </ul>
