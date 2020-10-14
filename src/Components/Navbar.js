@@ -1,15 +1,25 @@
 import React, { useState, useEffect } from 'react';
+import {debounce} from '../Utils/debounce'
+import { Link } from 'react-scroll';
 import { animateScroll as scroll } from 'react-scroll';
 import styled from 'styled-components';
-import { Link } from 'react-scroll';
+
 
 const StyledNavWrapper = styled.div`
-  margin: 0px;
-  padding: 0px;
   box-sizing: border-box;
   -webkit-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.3), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   -moz-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.3), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.3), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  .active {
+    visibility: visible;
+    transition: all 200ms ease-in;
+  }
+
+  .hidden {
+    visibility: hidden;
+    transation: all 200ms ease-out;
+    transfrom: translate(0, -100%);
+  }
 `;
 
 
@@ -20,7 +30,7 @@ const StyledNav = styled.nav`
   justify-content: space-between;
   overflow: hidden;
   position: fixed;
-  min-height: 5vh;
+  height: 5vh;
   width: 100%;
   background-color: ${props => props.theme.navColor};
   transition: all 0.3s ease-in;
@@ -169,24 +179,21 @@ const StyledNav = styled.nav`
 
 
 const Navbar = ({children}) => {
+  const SCROLL_OFFSET = -150;
   const [show, setShow] = useState(true);
   const [scrollPos, setScrollPos] = useState(0);
-  const SCROLL_OFFSET = -150;
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [visibile, setVisible] = useState(0);
 
-  const handleScroll = () => {
+  const handleScroll = debounce(() => {
+    // const currentScrollPos = window.pageYOffset;
+    // setVisible((prevScrollPos > currentScrollPos && prevScrollPos - currentScrollPos > 70) || currentScrollPos < 0);
+    // console.log(visibile);
+    // setPrevScrollPos(currentScrollPos);
     setScrollPos(document.body.getBoundingClientRect().top);
     setShow(document.body.getBoundingClientRect().top > scrollPos);
-  };
-
-  useEffect(() => {
-    navSlide();
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
+    console.log(show);
+  }, 100);
   const scrollToTop = () => {
     scroll.scrollToTop();
   };
@@ -194,7 +201,6 @@ const Navbar = ({children}) => {
   const navSlide = () => {
     const burger = document.querySelector('.burger');
     const nav = document.querySelector('.nav-links');
-    const navLinks = document.querySelector('.nav-links li');
 
     burger.addEventListener('click', () => {
 
@@ -218,9 +224,18 @@ const Navbar = ({children}) => {
     );
   }
 
+
+  useEffect(() => {
+    navSlide();
+    window.addEventListener('scroll', handleScroll);
+
+    return () =>  window.removeEventListener('scroll', handleScroll);
+    
+  }, [show, handleScroll, navSlide]);
+
   return (
     <StyledNavWrapper>
-      <StyledNav className="styled-nav">
+      <StyledNav className={show ? "styled-nav active" : "styled-nav hidden"}>
         <div className="logo" onClick={scrollToTop}>
           <h4> JBH </h4>
         </div>
