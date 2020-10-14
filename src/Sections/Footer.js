@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -72,6 +72,9 @@ const Footer = () => {
             <a href="https://www.instagram.com/hanjbbb/">
               <i className="social-icons fab fa-instagram"></i>
             </a>
+            <a href="mailto:junbeomh94@gmail.com">
+              <i className="social-icons fas fa-paper-plane"></i>
+            </a>
           </li>
         </ul>
       </SocialLinks>
@@ -80,10 +83,6 @@ const Footer = () => {
       <a id="email" href="mailto:junbeomh94@gmail.com"> <h6>	junbeomh94@gmail.com </h6> </a>
     </FooterWrapper>
   );
-};
-
-Footer.propTypes = {
-  githubInfo: PropTypes.object,
 };
 
 export default Footer;
