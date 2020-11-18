@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Container, Row, Col } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
 const ResumeItemDiv = styled.div`
     padding: 2rem;
@@ -26,8 +27,6 @@ const ResumeItemDiv = styled.div`
     //     }
     // }
 `;
-
-
 const ResumeSubHeader = styled.div`
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
@@ -38,8 +37,6 @@ const ResumeSubHeader = styled.div`
         padding: 0rem;
     }
 `;
-
-
 const StyledText = styled.div`
   ul.content-list {
     display: inline;
@@ -60,32 +57,36 @@ const StyledText = styled.div`
   }
 `;
 
-
 function ResumeItem(props) {
     return (
         <ResumeItemDiv>
             <Container>
-                    <Row>
-                        <Col sm={8}>
-                            <h3 className="resume-item-header-company text-emphasis"> {props.place} </h3>
-
-                        </Col>
-                        <Col sm={4}>
-                            <p  className="resume-item-header-date"> <span className="resume-item-header-date"> DEC. 2020 - </span> <span className="resume-item-header-date">  DEC. 2020 </span> </p>
-                        </Col>
-                    </Row>
+                <Row>
+                    <Col sm={8}>
+                        <h3 className="resume-item-header-company text-emphasis"> {props.place} </h3>
+                    </Col>
+                    <Col sm={4}>
+                        <p className="resume-item-header-date"> {props.date} </p>
+                    </Col>
+                </Row>
 
                 <ResumeSubHeader> <h5> {props.major} </h5> </ResumeSubHeader>
 
                 <StyledText>
                     <ul className="content-list">
-                        {props.desription  && props.desription .map((line, i) => <li key={i}> <span> {line} </span></li>)}
+                        {props.desription && props.desription.map((line, i) => <li key={i}> <span> {line} </span></li>)}
                     </ul>
-
                 </StyledText>
             </Container>
         </ResumeItemDiv>
     );
 }
+
+ResumeItem.propTypes = {
+    place: PropTypes.string,
+    date: PropTypes.string,
+    major: PropTypes.string,
+    desription: PropTypes.array,
+  };
 
 export default ResumeItem;

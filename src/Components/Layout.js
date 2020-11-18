@@ -7,8 +7,8 @@ import styled from 'styled-components';
 import CustomNavbar from "./Navbar";
 import SocialBar from './SocialBar';
 import '../../node_modules/font-awesome/css/font-awesome.min.css';
-
 import Switch from "react-switch";
+import PropTypes from 'prop-types';
 
 const ThemeWrapper = styled.header`
     margin-top: 0.5rem;
@@ -81,6 +81,9 @@ const Layout = ({ children }) => {
     );
 }
 
+Layout.propTypes = {
+    children: PropTypes.element.isRequired,
+};
 
 
 export default Layout;

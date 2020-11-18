@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
-// import { loaderDelay } from '@utils';
 
 const StyledSideElement = styled.div`
   width: 40px;
@@ -23,36 +22,22 @@ const StyledSideElement = styled.div`
   
 `;
 
-const SideNav = ({ children, isHome, orientation }) => {
-  const [isMounted, setIsMounted] = useState(!isHome);
+const SideNav = ({ children, orientation }) => {
 
-  useEffect(() => {
-    if (!isHome) {
-      return;
-    }
-    const timeout = setTimeout(() => setIsMounted(true), 1000);
-    return () => clearTimeout(timeout);
-  }, []);
 
   return (
     <StyledSideElement orientation={orientation}>
       <TransitionGroup component={null}>
-        {isMounted && (
-          <CSSTransition classNames={'example'} timeout={10000} in={isMounted}>
-            {children}
-          </CSSTransition>
-          
-        )}
-      
+        <CSSTransition classNames={'example'} timeout={10000}>
+          {children}
+        </CSSTransition>
       </TransitionGroup>
-
     </StyledSideElement>
   );
 };
 
 SideNav.propTypes = {
   children: PropTypes.node.isRequired,
-  isHome: PropTypes.bool,
   orientation: PropTypes.string,
 };
 

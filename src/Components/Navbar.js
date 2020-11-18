@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import {debounce} from '../Utils/debounce'
 import { Link } from 'react-scroll';
 import { animateScroll as scroll } from 'react-scroll';
 import styled from 'styled-components';
+import * as Constants from '../Constants/strings';
 
 
 const StyledNavWrapper = styled.div`
@@ -21,8 +21,6 @@ const StyledNavWrapper = styled.div`
     transfrom: translate(0, -100%);
   }
 `;
-
-
 const StyledNav = styled.nav`
   display: flex;
   z-index:99;
@@ -30,7 +28,7 @@ const StyledNav = styled.nav`
   justify-content: space-between;
   overflow: hidden;
   position: fixed;
-  height: 5vh;
+  min-height: 5vh;
   width: 100%;
   background-color: ${props => props.theme.navColor};
   transition: all 0.3s ease-in;
@@ -178,22 +176,12 @@ const StyledNav = styled.nav`
 
 
 
-const Navbar = ({children}) => {
+const Navbar = ({ children }) => {
   const SCROLL_OFFSET = -150;
   const [show, setShow] = useState(true);
   const [scrollPos, setScrollPos] = useState(0);
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
-  const [visibile, setVisible] = useState(0);
 
-  const handleScroll = debounce(() => {
-    // const currentScrollPos = window.pageYOffset;
-    // setVisible((prevScrollPos > currentScrollPos && prevScrollPos - currentScrollPos > 70) || currentScrollPos < 0);
-    // console.log(visibile);
-    // setPrevScrollPos(currentScrollPos);
-    setScrollPos(document.body.getBoundingClientRect().top);
-    setShow(document.body.getBoundingClientRect().top > scrollPos);
-    console.log(show);
-  }, 100);
+
   const scrollToTop = () => {
     scroll.scrollToTop();
   };
@@ -227,15 +215,12 @@ const Navbar = ({children}) => {
 
   useEffect(() => {
     navSlide();
-    window.addEventListener('scroll', handleScroll);
 
-    return () =>  window.removeEventListener('scroll', handleScroll);
-    
-  }, [show, handleScroll, navSlide]);
+  }, [show, navSlide]);
 
   return (
     <StyledNavWrapper>
-      <StyledNav className={show ? "styled-nav active" : "styled-nav hidden"}>
+      <StyledNav className="styled-nav">
         <div className="logo" onClick={scrollToTop}>
           <h4> JBH </h4>
         </div>
@@ -243,26 +228,28 @@ const Navbar = ({children}) => {
         <ul className="nav-links">
           <li>
             <Link activeClass="navbar-active" className="navItem" to="about" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} >
-              ABOUT
-                </Link>
+              {Constants.ABOUT.TITLE}
+            </Link>
           </li>
           <li>
-            <Link activeClass="navbar-active" className="navItem" to="projects" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500}
-            > PROJECTS
+            <Link activeClass="navbar-active" className="navItem" to="projects" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500}>
+              {Constants.PROJECTS.TITLE}
+
             </Link>
           </li>
           <li>
             <Link activeClass="navbar-active" className="navItem" to="experience" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} >
-              EXPERIENCE
-               </Link>
+              {Constants.EXPERIENCE.TITLE}
+
+            </Link>
           </li>
           <li>
             <Link activeClass="navbar-active" className="navItem" to="education" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500}>
-              EDUCATION
-             </Link>
+              {Constants.EDUCATION.TITLE}
+            </Link>
           </li>
           <li>
-              {children}    
+            {children}
           </li>
         </ul>
         <div className="burger">

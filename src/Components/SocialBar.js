@@ -1,8 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { animateScroll as scroll } from 'react-scroll';
 import SideNav from './SideNav';
+import * as Constants from '../Constants/strings';
 
 const StyledSocialList = styled.ul`
   display: flex;
@@ -63,27 +63,24 @@ const StyledSocialList = styled.ul`
   }
 `;
 
-const SocialBar = ({ isHome }) => {
+const SocialBar = () => {
   const scrollToTop = () => {
     scroll.scrollToTop();
   };
   return (
-    <SideNav isHome={isHome} orientation="right">
+    <SideNav orientation="right">
       <>
         <StyledSocialList>
           <div>
             <a onClick={scrollToTop}> <i className="fas fa-angle-double-up fa-2x"></i></a>
           </div>
-          <a href={'mailto:junbeomh94@gmail.com'}>junboemh94@gmail.com</a>
+          <a  href={`mailto:${Constants.SOCIAL_NETWORKS.EMAIL}`}> {Constants.SOCIAL_NETWORKS.EMAIL} </a>
           <li>
-            <a href="https://github.com/junbeomh">
+            <a href={Constants.SOCIAL_NETWORKS.GITHUB}>
               <i className="social-icons fab fa-github"></i>
             </a>
-            <a href="https://www.linkedin.com/in/johnjbhan/">
+            <a href={Constants.SOCIAL_NETWORKS.LINKEDIN}>
               <i className="social-icons fab fa-linkedin"></i>
-            </a>
-            <a href="https://www.instagram.com/hanjbbb/">
-              <i className="social-icons fab fa-instagram"></i>
             </a>
           </li>
           <p></p>
@@ -93,8 +90,5 @@ const SocialBar = ({ isHome }) => {
   );
 };
 
-SocialBar.propTypes = {
-  isHome: PropTypes.bool,
-};
 
 export default SocialBar;
