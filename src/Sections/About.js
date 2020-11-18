@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import profileImage from '../img/profile.jpg';
 import { Row, Col } from 'react-bootstrap';
-const PAGE_NAME = "01. ABOUT."
+import * as Constants from '../Constants/strings';
 
 const ContentWrapper = styled.div`
     padding: 1.5rem;
@@ -15,13 +15,11 @@ const ContentWrapper = styled.div`
         margin-bottom: 2rem;
     }
 `;
-
 const AboutContainer = styled.div`
     max-width: 50rem;
     border-radius: 10px;
     padding: 2rem;
 `;
-
 const StyledText = styled.div`
   margin-right: 1rem;
   ul.skills-list {
@@ -45,8 +43,6 @@ const StyledText = styled.div`
       
   }
 `;
-
-
 const ImageWrapper = styled.div`
     display: flex;
     justify-content: center;
@@ -110,31 +106,22 @@ const About = () => {
         const timeout = setTimeout(() => setIsMounted(true), 1000);
         return () => clearTimeout(timeout);
     }, []);
-    const skills = ['AWS', 'React', 'Python', 'Node & Express JS', 'MongoDB', 'Docker',];
+    const skills = Constants.ABOUT.SKILLS;
     return (
         <section id="about">
             <ContentWrapper>
-                <div className="resume-content-title" style={{}}>
-                    <p className="header-number" style={{ color: "#DBA111", fontSize: "25px", verticalAlign: "top" }}> 01. &nbsp;</p>
-                    <p className="header" style={{ color: "rgba(255, 255, 255, 0.9)", fontSize: "33px", lineHeight: "10px", position: "relative", }}> ABOUT ME.</p>
+                <div className="resume-content-title">
+                    <p className="header-number" style={{ color: "#DBA111", fontSize: "25px", verticalAlign: "top", marginRight: '10px' }}> {Constants.ABOUT.INDEX}</p>
+                    <p className="header" style={{ color: "rgba(255, 255, 255, 0.9)", fontSize: "33px", lineHeight: "10px", position: "relative", }}> {Constants.ABOUT.TITLE}</p>
                 </div>
                 <AboutContainer>
                     <Row>
                         <Col sm={8}>
                             <StyledText>
-                                <p>Hey! I'm JunBeom, a junior software engineer based in Vancouver, Canada. </p>
-                                <p>
-                                    Shortly after graduating from UBC, I have decided to make a career switch to Computer Science - and I have loving it since!
-                                </p>
-
-                                <p>
-                                    I am devoted to continuous learning, as there are always new perspectives unseen. Also, 
-                                    I love having structure and keeping things in order, with a mindset of continuosuly improving and optimizing them. 
-                                    Lastly, I enjoy and value team work because accomplishing collective goals as a group is always thrilling.
-                                </p>
-
-                                <p>Here are a few technologies I've been working with recently:</p>
-
+                                <p>{Constants.ABOUT.GREETING} </p>
+                                <p>{Constants.ABOUT.BACKGROUND} </p>
+                                <p>{Constants.ABOUT.ABOUT_LONG} </p>
+                                <p>{Constants.ABOUT.TECH_STACK} </p>
                                 <ul className="skills-list">
                                     {skills && skills.map((skill, i) => <li key={i}>{skill}</li>)}
                                 </ul>
@@ -150,7 +137,7 @@ const About = () => {
                                     ></img>
                                 </ImageWrapper>
                                 <ButtonWrapper>
-                                    <button><a href="/resume.pdf" className="resume-button"> RESUME </a> </button>
+                                    <button><a href="/resume.pdf" className="resume-button"> {Constants.ABOUT.RESUME} </a> </button>
                                 </ButtonWrapper>
                             </>
                         </Col>

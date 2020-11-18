@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import * as Constants from '../Constants/strings';
 
 const StyledMainSection = styled.section`
     margin: 0 auto;
@@ -50,24 +52,16 @@ const StyledMainSection = styled.section`
 
 
 const Main = () => {
-  const greet = <h1>Hi, my name is</h1>;
-  const name = <h2 className="big-heading text-emphasis">JunBeom Han.</h2>;
-  const position = <h3 className="big-heading"> Junior Software Developer. </h3>;
-  const description = (
-    <p>
-      I am a recent CS graduate based in Vancouver, BC, Canada. I enjoy building things
-      and discover how they are made. Also, I love playing soccer, snowboarding, and surfing!
-    </p>
-  );
-  const email = (
-    <p><a className="email-link"> junbeomh94@gmail.com </a></p>
-  );
-
-
+  const greet = <h1>{Constants.MAIN.GREETING}</h1>;
+  const name = <h2 className="big-heading text-emphasis">{Constants.MAIN.NAME}</h2>;
+  const position = <h3 className="big-heading"> {Constants.MAIN.POSITION} </h3>;
+  const description = <p>   {Constants.MAIN.ABOUT_SHORT} </p>;
+  const email = <p><a className="email-link"> {Constants.SOCIAL_NETWORKS.EMAIL} </a></p>;
   const items = [greet, name, position, description, email];
 
   return (
     <section id="main">
+      {console.log(Constants.name)}
       <StyledMainSection>
         {
           items.map((item, i) => (
@@ -78,5 +72,9 @@ const Main = () => {
 
   );
 };
+
+Main.propTypes = {
+
+}
 
 export default Main;

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import FootyRoom from '../img/footyroom-screenshot3.png';
 import BCITSAVOTES from '../img/bcitsavotes-screenshot1.png';
 import LoveYourPlanet from '../img/loveyourplanet.png';
+import * as Constants from '../Constants/strings';
 
 const ProjectContainer = styled.div`
 padding: 20px;
@@ -73,7 +74,6 @@ const CardContainer = styled.div`
 }
 `;
 
-const PAGE_NAME = "02 PROJECTS."
 
 const Projects = () => {
     const items = [
@@ -98,9 +98,9 @@ const Projects = () => {
     ];
     return (
         <section id="projects">
-            <div className="resume-content-title" style={{marginTop: "4rem", marginBottom: "4rem"}}>
-                <span className="header-number" style={{ color: "#DBA111", fontSize: "25px", verticalAlign: "bottom", verticalAlign: "top" }}> 02.&nbsp;</span>
-                <span className="header" style={{ color: "rgba(255, 255, 255, 0.9)", fontSize: "33px", verticalAlign: "top" }}> PROJECTS.</span>
+            <div className="resume-content-title">
+                <span className="header-number" style={{ color: "#DBA111", fontSize: "25px", verticalAlign: "bottom", verticalAlign: "top", marginRight: '10px' }}> {Constants.PROJECTS.INDEX} </span>
+                <span className="header" style={{ color: "rgba(255, 255, 255, 0.9)", fontSize: "33px", verticalAlign: "top" }}> {Constants.PROJECTS.TITLE} </span>
             </div>
             <ProjectContainer className="cards">
                 <div className="cards">
@@ -108,15 +108,15 @@ const Projects = () => {
                         <div key={i}>
                             <CardContainer>
                                 <div className="image-wrapper">
-                                    <img className="image" src={item.img}/>
+                                    <img className="image" src={item.img} />
                                     <div className="image-description">
-                                        <p style={{color: "black", fontWeight: "bold"}}>
+                                        <p style={{ color: "black", fontWeight: "bold" }}>
                                             {item.appCompany}
                                         </p>
-                                        <h3 style={{color: "black"}}>
+                                        <h3 style={{ color: "black" }}>
                                             {item.appName}
                                         </h3>
-                                        <h5 style={{color: "black"}}>
+                                        <h5 style={{ color: "black" }}>
                                             {item.appDescrip}
                                         </h5>
                                     </div>

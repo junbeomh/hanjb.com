@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import * as Constants from '../Constants/strings';
 
 const FooterWrapper = styled.footer`
   flex-direction: column;
@@ -63,24 +63,21 @@ const Footer = () => {
       <SocialLinks>
         <ul>
           <li>
-            <a href="https://github.com/junbeomh">
+            <a href={Constants.SOCIAL_NETWORKS.GITHUB}>
               <i className="social-icons fab fa-github"></i>
             </a>
-            <a href="https://www.linkedin.com/in/johnjbhan/">
+            <a href={Constants.SOCIAL_NETWORKS.LINKEDIN}>
               <i className="social-icons fab fa-linkedin"></i>
             </a>
-            <a href="https://www.instagram.com/hanjbbb/">
-              <i className="social-icons fab fa-instagram"></i>
-            </a>
-            <a href="mailto:junbeomh94@gmail.com">
+            <a href={`mailto:${Constants.SOCIAL_NETWORKS.EMAIL}`}>
               <i className="social-icons fas fa-paper-plane"></i>
             </a>
           </li>
         </ul>
       </SocialLinks>
 
-      <h6> &copy; JunBeom Han</h6>
-      <a id="email" href="mailto:junbeomh94@gmail.com"> <h6>	junbeomh94@gmail.com </h6> </a>
+      <h6> &copy; {Constants.MAIN.NAME} </h6>
+      <a id="email" href={`mailto:${Constants.SOCIAL_NETWORKS.EMAIL}`}> <h6>	{Constants.SOCIAL_NETWORKS.EMAIL} </h6> </a>
     </FooterWrapper>
   );
 };
