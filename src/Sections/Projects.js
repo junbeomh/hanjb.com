@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import FootyRoom from '../img/footyroom-screenshot3.png';
-import BCITSAVOTES from '../img/bcitsavotes-screenshot1.png';
-import LoveYourPlanet from '../img/loveyourplanet.png';
+import FootyRoom from '../Constants/img/footyroom-screenshot3.png';
+import BCITSAVOTES from '../Constants/img/bcitsavotes-screenshot1.png';
+import LoveYourPlanet from '../Constants/img/loveyourplanet.png';
 import * as Constants from '../Constants/strings';
 
 const ProjectContainer = styled.div`

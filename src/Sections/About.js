@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import profileImage from '../img/profile.jpg';
+import profileImage from '../Constants/img/profile.jpg';
 import { Row, Col } from 'react-bootstrap';
 import * as Constants from '../Constants/strings';
 
