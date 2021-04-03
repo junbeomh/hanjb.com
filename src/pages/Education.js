@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import ResumeItem from '../Components/ResumeItem';
-import * as Constants from '../Constants/strings';
+import ResumeItem from '../components/ResumeItem';
+import * as Constants from '../constants/strings';
+import ContentHeader from '../components/ContentHeader';
 
 const ContentWrapper = styled.div`
     padding: 1.5rem;
@@ -24,15 +25,14 @@ const Education = () => {
     return (
         <section id="education">
             <ContentWrapper>
-                <div className="resume-content-title">
-                    <span className="header-number" style={{ color: "#DBA111", fontSize: "25px", verticalAlign: "bottom", verticalAlign: "top", marginRight: '10px' }}> 04. &nbsp;</span>
-                    <span className="header" style={{ color: "rgba(255, 255, 255, 0.9)", fontSize: "33px", verticalAlign: "top" }}> EDUCATION.</span>
-                </div>
+                <ContentHeader contentIndex={Constants.EDUCATION.INDEX} title={Constants.EDUCATION.TITLE} />
+
                 <div className="resume-items">
                     {
-                        educations && educations.map((education) => {
+                        educations && educations.map((education, index) => {
                             return (
                                 <ResumeItem
+                                    key={index}
                                     place={education.name}
                                     major={education.major}
                                     date={education.date}

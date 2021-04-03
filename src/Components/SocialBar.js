@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { animateScroll as scroll } from 'react-scroll';
 import SideNav from './SideNav';
-import * as Constants from '../Constants/strings';
+import * as Constants from '../constants/strings';
 
 const StyledSocialList = styled.ul`
   display: flex;
@@ -12,34 +12,37 @@ const StyledSocialList = styled.ul`
   padding: 0;
   list-style: none;
   &:after {
+    transition: all 0.5s ease-in;
     content: '';
     display: block;
     width: 3px;
     height: 50px;
-    margin: 0 auto;
+    background-color: ${props => props.theme.accentColorLight};
   }
-
   div {
-    margin-bottom: 0.25rem;
+    /* margin-bottom: 0.25rem; */
     &:hover,
     &:focus {
       transform: translateY(-3px);
-      color: var(--color-yellow);
+      color: ${props => props.theme.accentColor};
       ;
     }
   }
  
   a {
+    color: ${props => props.theme.accentColorLight};
     font-family: var(--font-mono);
     font-size: var(--fz-xs);
     text-decoration: none;
     letter-spacing: 0.3em;
+    font-weight: ${props => props.theme.fontWeightEmphasis};
     writing-mode: vertical-rl;
-    margin-top: 0.75rem;
+    margin-top: 0.85rem;
+    transition: all 0ms linear;
     &:hover,
     &:focus {
       transform: translateY(-3px);
-      color: var(--color-yellow);
+      color: ${props => props.theme.accentColor};
       ;
     }
     
@@ -52,10 +55,11 @@ const StyledSocialList = styled.ul`
       .social-icons {
         width: 23px;
         height: 23px;
+        transition: all 0s ease-in;
         &:hover,
         &:focus {
           transform: translateY(-3px);
-          color: var(--color-yellow);
+          color: ${props => props.theme.accentColor};
           ;
         }
       }
@@ -72,10 +76,13 @@ const SocialBar = () => {
       <>
         <StyledSocialList>
           <div>
-            <a onClick={scrollToTop}> <i className="fas fa-angle-double-up fa-2x"></i></a>
+            <span onClick={scrollToTop}> <i className="fas fa-angle-double-up fa-2x"></i></span>
           </div>
-          <a  href={`mailto:${Constants.SOCIAL_NETWORKS.EMAIL}`}> {Constants.SOCIAL_NETWORKS.EMAIL} </a>
+          {/* <a href={`mailto:${Constants.SOCIAL_NETWORKS.EMAIL}`}> {Constants.SOCIAL_NETWORKS.EMAIL} </a> */}
           <li>
+            <a href={`mailto:${Constants.SOCIAL_NETWORKS.EMAIL}`}>
+              <i className="social-icons fas fa-paper-plane"></i>
+            </a>
             <a href={Constants.SOCIAL_NETWORKS.GITHUB}>
               <i className="social-icons fab fa-github"></i>
             </a>

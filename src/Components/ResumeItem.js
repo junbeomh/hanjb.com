@@ -16,16 +16,11 @@ const ResumeItemDiv = styled.div`
             padding: 1rem;
     }
 
-    // @media screen and (max-width: 768px){
-    //     .resume-item-header-date {
-    //         size: 10px;
-    //     }
-    // }
-    // @media screen and (max-width: 480px){
-    //     .resume-item-header-date {
-    //         size: 10px;
-    //     }
-    // }
+    .resume-item-header-text {
+        font-weight: 800;
+        color: ${props => props.theme.textColorDark};
+    }
+
 `;
 const ResumeSubHeader = styled.div`
     padding-top: 0.5rem;
@@ -63,14 +58,14 @@ function ResumeItem(props) {
             <Container>
                 <Row>
                     <Col sm={8}>
-                        <h3 className="resume-item-header-company text-emphasis"> {props.place} </h3>
+                        <h3 className="resume-item-header-text" style={{fontWeight: "600"}}> {props.place} </h3>
                     </Col>
                     <Col sm={4}>
                         <p className="resume-item-header-date"> {props.date} </p>
                     </Col>
                 </Row>
 
-                <ResumeSubHeader> <h5> {props.major} </h5> </ResumeSubHeader>
+                <ResumeSubHeader> <p> {props.major} </p> </ResumeSubHeader>
 
                 <StyledText>
                     <ul className="content-list">

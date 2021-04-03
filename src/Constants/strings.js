@@ -1,20 +1,19 @@
-
-
 module.exports = Object.freeze({
     MAIN: {
         NAME: "JunBeom Han.",
+        INITIALS: "JBH",
         POSITION: "Junior Software Developer.",
         ABOUT_SHORT: " I am a CS student based in Vancouver, BC, Canada. I enjoy building things and discover how they are made. Also, I love playing soccer, snowboarding, and surfing!",
         GREETING: "Hi, my name is",
     },
     ABOUT: {
         INDEX: "01.",
-        TITLE: "ABOUT ME.",
+        TITLE: "ABOUT.",
         GREETING: "Hey! I'm JunBeom, a junior software engineer based in Vancouver, Canada.",
         BACKGROUND: "Shortly after graduating from UBC, I have decided to make a career switch to Computer Science - and I am loving it since!",
         ABOUT_LONG: " I am devoted to continuous learning, as there are always new perspectives unseen. Also, I love having structure and keeping things in order, with a mindset of continuously improving and optimizing them. Lastly, I enjoy and value teamwork because accomplishing collective goals as a group is always thrilling.",
         TECH_STACK: "Here are a few technologies I've been working with recently:",
-        SKILLS: ['AWS', 'React', 'Python', 'Node & Express JS', 'MongoDB', 'Docker'],
+        SKILLS: ['AWS', 'Javascript', 'React', 'Node & Express', 'Python', 'SQL'],
         RESUME: "RESUME"
     },
 
@@ -92,13 +91,4 @@ module.exports = Object.freeze({
         LINKEDIN: "https://www.linkedin.com/in/johnjbhan/",
         INSTAGRAM: "https://www.instagram.com/hanjbbb/",
     },
-
-    NAVBAR: {
-
-    },
-
-    FOOTER: {
-
-    }
-
 });

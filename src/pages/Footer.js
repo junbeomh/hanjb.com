@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import * as Constants from '../Constants/strings';
+import * as Constants from '../constants/strings';
 
 const FooterWrapper = styled.footer`
   flex-direction: column;
@@ -8,18 +8,20 @@ const FooterWrapper = styled.footer`
   min-height: 100px;
   padding: 15px;
   text-align: center;
-  margin-top: 150px;
+  margin-top: 250px;
   h6{
     letter-spacing: 0.1em;
+    font-weight: ${props => props.theme.fontWeightEmphasis};
   }
   #email {
+    transition: all 0s ease-in;
     display: none;
     text-decoration: none;
     letter-spacing: 0.1em;
     &:hover,
     &:focus {
       transform: translateY(-3px);
-      color: var(--color-yellow);
+      color: var( --color-blue);
       ;
     }
     @media (max-width: 991px) {
@@ -40,6 +42,7 @@ const SocialLinks = styled.div`
     margin: 0;
     list-style: none;
     a {
+      transition: all 0.3s ease-in;
       padding: 0px;
       .social-icons {
         margin-left:10px;
@@ -48,7 +51,7 @@ const SocialLinks = styled.div`
         &:hover,
         &:focus {
           transform: translateY(-3px);
-          color: var(--color-yellow);
+          color: var( --color-blue);
           ;
         }
       }
@@ -76,8 +79,8 @@ const Footer = () => {
         </ul>
       </SocialLinks>
 
-      <h6> &copy; {Constants.MAIN.NAME} </h6>
-      <a id="email" href={`mailto:${Constants.SOCIAL_NETWORKS.EMAIL}`}> <h6>	{Constants.SOCIAL_NETWORKS.EMAIL} </h6> </a>
+      <span> &copy; {Constants.MAIN.NAME} </span>
+      <a id="email" href={`mailto:${Constants.SOCIAL_NETWORKS.EMAIL}`}> <span>	{Constants.SOCIAL_NETWORKS.EMAIL} </span> </a>
     </FooterWrapper>
   );
 };

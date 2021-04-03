@@ -1,14 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import * as Constants from '../Constants/strings';
+import * as Constants from '../constants/strings';
 
 const StyledMainSection = styled.section`
     margin: 0 auto;
     width: 100%;
     max-width: 1600px;
     padding: 100px 100px;
-    height: 70vh;
+    height: 60vh;
     @media (max-width: 1080px) {
       padding: 100px 100px;
     }
@@ -23,11 +22,10 @@ const StyledMainSection = styled.section`
   flex-direction: column;
   align-items: flex-start;
   h1 {
-    margin: 0 0 30px 4px;
+    margin: 50px 0 30px 4px;
     color: white);
-    font-family: var(--font-main);
     font-size: clamp(var(--fz-md), 5vw, var(--fz-lg));
-    font-weight: 400;
+    font-weight: 600;
     @media (max-width: 480px) {
       margin: 0 0 20px 2px;
     }
@@ -37,31 +35,32 @@ const StyledMainSection = styled.section`
     line-height: 0.9;
   }
   p {
-    margin: 30px 0 0;
+    margin: 40px 0 0;
     max-width: 500px;
   }
   .email-link {
     letter-spacing: 0.1em;
+    margin: 20px 0 0;
+
     &:hover,
     &:focus {
       transform: translateY(-3px);
-      color: var(--color-yellow);
+      color: ${props => props.theme.accentColor};
     }
     }
 `;
 
 
 const Main = () => {
-  const greet = <h1>{Constants.MAIN.GREETING}</h1>;
-  const name = <h2 className="big-heading text-emphasis">{Constants.MAIN.NAME}</h2>;
-  const position = <h3 className="big-heading"> {Constants.MAIN.POSITION} </h3>;
+  const greet = <h1 className="text-accent">{Constants.MAIN.GREETING}</h1>;
+  const name = <h2 className="big-heading">{Constants.MAIN.NAME}</h2>;
+  const position = <h3 className="medium-heading"> {Constants.MAIN.POSITION} </h3>;
   const description = <p>   {Constants.MAIN.ABOUT_SHORT} </p>;
-  const email = <p><a className="email-link"> {Constants.SOCIAL_NETWORKS.EMAIL} </a></p>;
+  const email = <p className="text-accent"><a className="email-link"  href={`mailto:${Constants.SOCIAL_NETWORKS.EMAIL}`}> {Constants.SOCIAL_NETWORKS.EMAIL} </a></p>;
   const items = [greet, name, position, description, email];
 
   return (
     <section id="main">
-      {console.log(Constants.name)}
       <StyledMainSection>
         {
           items.map((item, i) => (

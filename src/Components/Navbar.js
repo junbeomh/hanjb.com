@@ -1,15 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, {  useEffect } from 'react';
 import { Link } from 'react-scroll';
 import { animateScroll as scroll } from 'react-scroll';
 import styled from 'styled-components';
-import * as Constants from '../Constants/strings';
+import * as Constants from '../constants/strings';
 
 
 const StyledNavWrapper = styled.div`
   box-sizing: border-box;
-  -webkit-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.3), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  -moz-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.3), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.3), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   .active {
     visibility: visible;
     transition: all 200ms ease-in;
@@ -31,16 +28,8 @@ const StyledNav = styled.nav`
   min-height: 5vh;
   width: 100%;
   background-color: ${props => props.theme.navColor};
-  transition: all 0.3s ease-in;
-
-  .logo {
-    text-transform: uppsercase;
-    letter-spacing: 5px;
-    cursor: pointer;
-    margin-top: 0.25rem;
-    margin-left: 4rem;
-    color: white;
-  }
+  border-bottom: 1.5px solid ${props => props.theme.accentColorLight};
+  
 
   .nav-links {
     display: flex;
@@ -53,7 +42,7 @@ const StyledNav = styled.nav`
   .nav-links li{
     list-style: none;
     margin-right: 2rem;
-    color:white
+    font-weight: ${props => props.theme.fontWeightEmphasis};
   }
 
   .themeSwitch {
@@ -76,7 +65,7 @@ const StyledNav = styled.nav`
   .burger div {
     width: 25px;
     height: 3px;
-    background-color: rgb(226, 226, 266);
+    background-color: ${props => props.theme.accentColor};
     margin: 5px;
     transition: all 0.3s ease;
   }
@@ -92,9 +81,10 @@ const StyledNav = styled.nav`
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 60%;
+      width: 75%;
       transform: translateX(100%);
       margin-top:0rem;
+
     }
 
     .nav-links li{
@@ -105,6 +95,7 @@ const StyledNav = styled.nav`
     .logo {
       margin-top: 0.25rem;
       margin-left: 2rem;
+      color: ${props => props.theme.accentColor};
     }
 
     .nav-links li {
@@ -127,7 +118,7 @@ const StyledNav = styled.nav`
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 60%;
+      width: 75%;
       transform: translateX(100%);
       margin-top:0rem;
     }
@@ -177,9 +168,7 @@ const StyledNav = styled.nav`
 
 
 const Navbar = ({ children }) => {
-  const SCROLL_OFFSET = -150;
-  const [show, setShow] = useState(true);
-  const [scrollPos, setScrollPos] = useState(0);
+  const SCROLL_OFFSET = -275;
 
 
   const scrollToTop = () => {
@@ -216,7 +205,7 @@ const Navbar = ({ children }) => {
   useEffect(() => {
     navSlide();
 
-  }, [show, navSlide]);
+  }, );
 
   return (
     <StyledNavWrapper>
@@ -228,24 +217,24 @@ const Navbar = ({ children }) => {
         <ul className="nav-links">
           <li>
             <Link activeClass="navbar-active" className="navItem" to="about" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} >
-              {Constants.ABOUT.TITLE}
+              {Constants.ABOUT.TITLE.split(".")}
             </Link>
           </li>
           <li>
             <Link activeClass="navbar-active" className="navItem" to="projects" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500}>
-              {Constants.PROJECTS.TITLE}
+              {Constants.PROJECTS.TITLE.split(".")}
 
             </Link>
           </li>
           <li>
             <Link activeClass="navbar-active" className="navItem" to="experience" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} >
-              {Constants.EXPERIENCE.TITLE}
+              {Constants.EXPERIENCE.TITLE.split(".")}
 
             </Link>
           </li>
           <li>
             <Link activeClass="navbar-active" className="navItem" to="education" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500}>
-              {Constants.EDUCATION.TITLE}
+              {Constants.EDUCATION.TITLE.split(".")}
             </Link>
           </li>
           <li>

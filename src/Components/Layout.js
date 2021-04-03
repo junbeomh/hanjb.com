@@ -1,8 +1,8 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { GlobalStyles } from '../Styles/GlobalStyles';
-import { light, dark } from '../Styles/Theme';
-import { useDarkMode } from '../Hooks/useDarkMode';
+import { GlobalStyles } from '../styles/GlobalStyles';
+import { light, dark } from '../styles/Theme';
+import { useDarkMode } from '../hooks/useDarkMode';
 import styled from 'styled-components';
 import CustomNavbar from "./Navbar";
 import SocialBar from './SocialBar';
@@ -18,6 +18,7 @@ const ThemeWrapper = styled.header`
     @media screen and (max-width: 480px){    
         margin-top: 0rem;
       }
+
 `;
 
 const Layout = ({ children }) => {
@@ -37,10 +38,10 @@ const Layout = ({ children }) => {
                             <Switch
                                 onChange={toggleTheme}
                                 checked={checked}
-                                handleDiameter={20}
-                                offColor="#fff"
+                                handleDiameter={18}
+                                offColor="#e0e0e0"
                                 onColor="#fff"
-                                offHandleColor="#023876"
+                                offHandleColor="#034694"
                                 onHandleColor="#121212"
                                 height={28}
                                 width={47}
@@ -82,7 +83,7 @@ const Layout = ({ children }) => {
 }
 
 Layout.propTypes = {
-    children: PropTypes.element.isRequired,
+    children: PropTypes.array.isRequired,
 };
 
 
