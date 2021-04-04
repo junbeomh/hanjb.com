@@ -40,7 +40,6 @@ const Projects = () => {
             appName: "Memory Matrix",
             img: MemoryMatrix,
             techStack: "Javascript (ES6) • Node.js • AWS",
-            appDescrip: "He as compliment unreserved projecting. Between had observe pretend delight for believe. Do newspaper questions consulted sweetness do. Our sportsman his unwilling fulfilled departure law. Now world own total saved above her cause table. ",
             appDescripShort: "Severless browser game to challenge your memory",
             links: [{ type: "github", url: "https://github.com/junbeomh/MemoryGame-FrontEnd", }, { type: "browser", url: "http://memorygame.hanjb.com/" }]
         },
@@ -49,8 +48,7 @@ const Projects = () => {
             appName: "FootyRoom",
             img: FootyRoom,
             techStack: "React.js • Node.js • Express",
-            appDescrip: "He as compliment unreserved projecting. Between had observe pretend delight for believe.",
-            appDescripShort: "real-time match broadcaster for EPL",
+            appDescripShort: "Real-time match broadcaster for Enlgish Premiere League soccer fixtures",
             links: []
 
         },
@@ -59,7 +57,6 @@ const Projects = () => {
             appName: "BCITSAVotes",
             img: BCITSAVOTES,
             techStack: "Flutter • Firebase",
-            appDescrip: "He as compliment unreserved projecting. Between had observe pretend delight for believe. Do newspaper questions consulted sweetness do. Our sportsman his unwilling fulfilled departure law. Now world own total saved above her cause table. ",
             appDescripShort: "Voting platform for student council meetings",
             links: [{ type: "appstore", url: "https://apps.apple.com/us/app/bcitsa-votes/id1515373111", }]
         },

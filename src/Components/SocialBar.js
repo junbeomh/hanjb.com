@@ -17,20 +17,20 @@ const StyledSocialList = styled.ul`
     display: block;
     width: 3px;
     height: 50px;
-    background-color: ${props => props.theme.accentColorLight};
+    background-color: ${props => props.theme.accentColor};
   }
   div {
     /* margin-bottom: 0.25rem; */
     &:hover,
     &:focus {
       transform: translateY(-3px);
-      color: ${props => props.theme.accentColor};
+      color: ${props => props.theme.accentColorLight};
       ;
     }
   }
  
   a {
-    color: ${props => props.theme.accentColorLight};
+    color: ${props => props.theme.accentColor};
     font-family: var(--font-mono);
     font-size: var(--fz-xs);
     text-decoration: none;
@@ -42,7 +42,7 @@ const StyledSocialList = styled.ul`
     &:hover,
     &:focus {
       transform: translateY(-3px);
-      color: ${props => props.theme.accentColor};
+      color: ${props => props.theme.accentColorLight};
       ;
     }
     

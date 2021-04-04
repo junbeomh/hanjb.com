@@ -1,9 +1,10 @@
-import React, {  useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-scroll';
 import { animateScroll as scroll } from 'react-scroll';
+import Switch from "react-switch";
 import styled from 'styled-components';
 import * as Constants from '../constants/strings';
-
+import ThemeSwitch from './ThemeSwitch';
 
 const StyledNavWrapper = styled.div`
   box-sizing: border-box;
@@ -11,13 +12,9 @@ const StyledNavWrapper = styled.div`
     visibility: visible;
     transition: all 200ms ease-in;
   }
-
-  .hidden {
-    visibility: hidden;
-    transation: all 200ms ease-out;
-    transfrom: translate(0, -100%);
-  }
 `;
+
+
 const StyledNav = styled.nav`
   display: flex;
   z-index:99;
@@ -28,7 +25,6 @@ const StyledNav = styled.nav`
   min-height: 5vh;
   width: 100%;
   background-color: ${props => props.theme.navColor};
-  border-bottom: 1.5px solid ${props => props.theme.accentColorLight};
   
 
   .nav-links {
@@ -159,10 +155,10 @@ const StyledNav = styled.nav`
     transform: rotate(45deg) translate(-5px, -6px);
   }
 
-  .transition {
+  /* .transition {
     transition: all 0.3s ease-in;
-  }
-  .
+  } */
+  
 `;
 
 
@@ -204,8 +200,7 @@ const Navbar = ({ children }) => {
 
   useEffect(() => {
     navSlide();
-
-  }, );
+  }, []);
 
   return (
     <StyledNavWrapper>
@@ -216,29 +211,55 @@ const Navbar = ({ children }) => {
 
         <ul className="nav-links">
           <li>
-            <Link activeClass="navbar-active" className="navItem" to="about" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} >
+            <Link
+              activeClass="navbar-active"
+              className="navItem" to="about"
+              offset={SCROLL_OFFSET}
+              spy={true}
+              smooth={true} 
+              uration={500} >
               {Constants.ABOUT.TITLE.split(".")}
             </Link>
           </li>
           <li>
-            <Link activeClass="navbar-active" className="navItem" to="projects" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500}>
+            <Link
+              activeClass="navbar-active"
+              className="navItem"
+              to="projects"
+              offset={SCROLL_OFFSET}
+              spy={true}
+              smooth={true}
+              duration={500}>
               {Constants.PROJECTS.TITLE.split(".")}
 
             </Link>
           </li>
           <li>
-            <Link activeClass="navbar-active" className="navItem" to="experience" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500} >
+            <Link
+              activeClass="navbar-active"
+              className="navItem"
+              to="experience"
+              offset={SCROLL_OFFSET}
+              spy={true}
+              smooth={true} 
+              uration={500} >
               {Constants.EXPERIENCE.TITLE.split(".")}
 
             </Link>
           </li>
           <li>
-            <Link activeClass="navbar-active" className="navItem" to="education" offset={SCROLL_OFFSET} spy={true} smooth={true} duration={500}>
+            <Link
+              activeClass="navbar-active"
+              className="navItem" to="education"
+              offset={SCROLL_OFFSET}
+              spy={true}
+              smooth={true}
+              duration={500}>
               {Constants.EDUCATION.TITLE.split(".")}
             </Link>
           </li>
           <li>
-            {children}
+            <ThemeSwitch />
           </li>
         </ul>
         <div className="burger">
@@ -251,4 +272,4 @@ const Navbar = ({ children }) => {
   );
 }
 
-export default Navbar;    
+export default Navbar;

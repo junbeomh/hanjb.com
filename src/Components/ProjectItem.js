@@ -338,7 +338,6 @@ const ProjectItem = (props) => {
                                 {props.item.links && props.item.links.map((link, index) => {
                                     switch (link.type) {
                                         case "github":
-                                            console.log(link.type)
                                             return (
                                                 <a key={index} href={link.url}>
                                                     <i className="social-icons fab fa-github"></i>
@@ -382,29 +381,7 @@ const ProjectItem = (props) => {
                         <div className="modal-image-wrapper">
                             <span className="helper"></span>
                             <img className="image" src={props.item.img} />
-                            {/* <Carousel className="carousel" style={{width: "100%"}}>
-                            <Carousel.Item className="carousel-item">
-                                <img
-                                    className="d-block w-100 carousel-item-image mx-auto"
-                                    src={props.item.img}
-                                    alt="First slide"
-                                />
-                            </Carousel.Item>
-                            <Carousel.Item >
-                                <img
-                                    className="d-block w-100 carousel-item-image mx-auto"
-                                    src={props.item.img}
-                                    alt="Third slide"
-                                />
-                            </Carousel.Item>
-                            <Carousel.Item>
-                                <img
-                                    className="d-block w-100 carousel-item-image mx-auto" 
-                                    src={props.item.img}
-                                    alt="Third slide"
-                                />
-                            </Carousel.Item>
-                        </Carousel> */}
+ 
                         </div>
                         <div className="modal-project">
                             <div className="modal-project-header" >

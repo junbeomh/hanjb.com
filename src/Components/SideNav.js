@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
 
 const StyledSideElement = styled.div`
@@ -10,7 +9,7 @@ const StyledSideElement = styled.div`
   left: ${props => (props.orientation === 'left' ? '40px' : 'auto')};
   right: ${props => (props.orientation === 'left' ? 'auto' : '40px')};
   z-index: 99;
-  color: ${props => props.theme.accentColorLight};
+  color: ${props => props.theme.accentColor};
   @media (max-width: 1080px) {
     left: ${props => (props.orientation === 'left' ? '20px' : 'auto')};
     right: ${props => (props.orientation === 'left' ? 'auto' : '20px')};
@@ -27,11 +26,7 @@ const SideNav = ({ children, orientation }) => {
 
   return (
     <StyledSideElement orientation={orientation}>
-      <TransitionGroup component={null}>
-        <CSSTransition classNames={'example'} timeout={10000}>
           {children}
-        </CSSTransition>
-      </TransitionGroup>
     </StyledSideElement>
   );
 };

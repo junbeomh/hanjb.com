@@ -45,7 +45,7 @@
 }
 
 #root {
-  transition: all 0.5 linear;
+  /* transition: all 0.5 linear; */
   filter: none;
 }
 

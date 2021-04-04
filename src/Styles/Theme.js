@@ -13,12 +13,12 @@ export const dark = {
   id: "dark",
   ...base,
   primary: "#121212",
-  backgroundColor: "linear-gradient(to bottom, #121212 0%, #121212 100%)",
+  backgroundColor: "#22303C",
   textColor: "rgba(255, 255, 255, 0.75)",
   textColorDark: "white",
-  accentColor: 'white',
-  accentColorLight: 'rgba(255,255,255, 0.7)',
-  navColor: "black",
+  accentColor: '#8899A6',
+  accentColorLight: '#b0c5d6',
+  navColor: "#15202B",
   buttonHover: ' rgba(100, 100, 100, 0.3)',
 };
 
@@ -26,12 +26,12 @@ export const light = {
   id: "light",
   ...base,
   primary: "#7de2fc",
-  backgroundColor: "white",
+  backgroundColor: "#F6F6F6",
   textColor: "rgba(0,0,0,0.75)",
   textColorDark: "black",
   accentColor: '#034694',
   accentColorLight: '#1C77C3',
-  navColor: "white",
+  navColor: "#ededed",
   buttonHover: '#034694',
 };
 

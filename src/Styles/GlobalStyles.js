@@ -67,17 +67,6 @@ export const GlobalStyles = createGlobalStyle`
     transform: translateY(-2px);
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6, {
-    margin: 0 0 10px 0;
-    font-weight: 600;
-    color: ${props => props.theme.textColor}
-    line-height: 1;
-  }
   
   section {
     margin: 0 auto;

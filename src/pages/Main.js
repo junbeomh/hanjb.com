@@ -52,7 +52,8 @@ const StyledMainSection = styled.section`
 
 
 const Main = () => {
-  const greet = <h1 className="text-accent">{Constants.MAIN.GREETING}</h1>;
+  // TODO: FIX THESE TAGS: H1... ? 
+  const greet = <h1 >{Constants.MAIN.GREETING}</h1>;
   const name = <h2 className="big-heading">{Constants.MAIN.NAME}</h2>;
   const position = <h3 className="medium-heading"> {Constants.MAIN.POSITION} </h3>;
   const description = <p>   {Constants.MAIN.ABOUT_SHORT} </p>;
